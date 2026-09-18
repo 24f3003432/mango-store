@@ -92,7 +92,7 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
         particleCount: 40,
         spread: 50,
         origin: { y: 0.8 },
-        colors: ['#F59E0B', '#10B981', '#FBBF24']
+        colors: ['#901435', '#C4284D', '#F9CBD6']
       });
     } catch {
       // ignore
@@ -394,7 +394,7 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
 
       {/* SECTION 6: "HELP ME CHOOSE" (short multi-step Q&A widget ending in model recommendation) */}
       <section className="py-16 px-4 sm:px-6 max-w-4xl mx-auto">
-        <div className="p-8 sm:p-10 rounded-mango-lg bg-gradient-to-br from-amber-500/10 via-mango-500/5 to-transparent border border-mango-300/40 dark:border-mango-500/30 shadow-card">
+        <div className="p-8 sm:p-10 rounded-mango-lg bg-gradient-to-br from-mango-500/10 via-rose-500/5 to-transparent border border-mango-300/40 dark:border-mango-500/30 shadow-card">
           <div className="flex items-center gap-2 text-mango-600 dark:text-mango-400 font-bold text-xs uppercase tracking-wider mb-2">
             <HelpCircle className="w-4 h-4" />
             <span>Interactive Device Matcher &bull; Step {quizStep} of 3</span>

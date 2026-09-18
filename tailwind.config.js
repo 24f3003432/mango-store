@@ -9,32 +9,38 @@ export default {
     extend: {
       colors: {
         mango: {
-          50: '#FFFBEB',
-          100: '#FEF3C7',
-          200: '#FDE68A',
-          300: '#FCD34D',
-          400: '#FBBF24',
-          500: '#F59E0B', // Primary Mango Gold
-          600: '#EA580C', // Vibrant Mango Amber/Orange
-          700: '#C2410C',
-          800: '#9A3412',
-          900: '#7C2D12',
-          950: '#431407',
+          50: '#F9F5F1',
+          100: '#F2E9E0',
+          200: '#E7D2BF',
+          300: '#D7B79A',
+          400: '#C28D68',
+          500: '#A66E4E',
+          600: '#8B5C42',
+          700: '#6F4737',
+          800: '#4D352E',
+          900: '#2F241F',
+          950: '#1B1412',
         },
         leaf: {
-          50: '#ECFDF5',
-          500: '#10B981',
-          600: '#059669',
-          700: '#047857'
+          50: '#F5F7F3',
+          100: '#E9EFE7',
+          200: '#D6E2D8',
+          300: '#B4CBBB',
+          400: '#8DAE98',
+          500: '#738F7D',
+          600: '#597267',
+          700: '#42564F',
+          800: '#2F4038',
+          900: '#1F2D29',
         },
         surface: {
-          light: '#FBFBFD',
+          light: '#F7F4F0',
           cardLight: '#FFFFFF',
-          dark: '#0C0D0E',
-          cardDark: '#16171A',
-          cardDarkHover: '#1E2024',
-          borderLight: '#E5E7EB',
-          borderDark: '#26282E'
+          dark: '#171614',
+          cardDark: '#1F1D1A',
+          cardDarkHover: '#2A2622',
+          borderLight: '#E8DFD5',
+          borderDark: '#3A352F'
         }
       },
       fontFamily: {
@@ -46,8 +52,8 @@ export default {
         'mango-sm': '12px',
       },
       boxShadow: {
-        'mango-sm': '0 2px 8px -2px rgba(245, 158, 11, 0.12)',
-        'mango-glow': '0 0 25px -5px rgba(245, 158, 11, 0.35)',
+        'mango-sm': '0 2px 8px -2px rgba(144, 20, 53, 0.2)',
+        'mango-glow': '0 0 25px -4px rgba(144, 20, 53, 0.45)',
         'card': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
         'card-dark': '0 4px 20px -2px rgba(0, 0, 0, 0.3)',
       }

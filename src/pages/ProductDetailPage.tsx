@@ -160,7 +160,7 @@ export const ProductDetailPage: React.FC = () => {
         particleCount: 50,
         spread: 60,
         origin: { y: 0.8 },
-        colors: ['#F59E0B', '#10B981', '#FBBF24']
+        colors: ['#901435', '#C4284D', '#F9CBD6']
       });
     } catch {
       // ignore

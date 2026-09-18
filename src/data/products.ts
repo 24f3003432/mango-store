@@ -440,7 +440,7 @@ export const ALL_PRODUCTS: Product[] = [
     chip: 'Mango M-Core 3 Ultra',
     batteryLife: 'Up to 22 hours',
     colors: [
-      { name: 'Amber Sun Gold', hex: '#F59E0B', image: '/assets/laptop_pro.jpg' },
+      { name: 'Burgundy Cabernet', hex: '#800020', image: '/assets/laptop_pro.jpg' },
       { name: 'Titanium Graphite', hex: '#374151', image: '/assets/laptop_pro_spaceblack.jpg' },
       { name: 'Starlight Silver', hex: '#E5E7EB', image: '/assets/laptop_pro_silver.jpg' }
     ],
@@ -507,7 +507,7 @@ export const ALL_PRODUCTS: Product[] = [
     colors: [
       { name: 'Midnight Deep', hex: '#1E293B', image: '/assets/laptop_pro_spaceblack.jpg' },
       { name: 'Starlight Silver', hex: '#E5E7EB', image: '/assets/laptop_air.jpg' },
-      { name: 'Amber Glow', hex: '#F59E0B', image: '/assets/laptop_pro.jpg' }
+      { name: 'Burgundy Glow', hex: '#901435', image: '/assets/laptop_pro.jpg' }
     ],
     storageOptions: [
       { size: '256GB SSD', priceDelta: 0 },
@@ -596,7 +596,7 @@ export const ALL_PRODUCTS: Product[] = [
     screenSize: '11-inch Liquid Display',
     chip: 'Mango M-Core 2',
     colors: [
-      { name: 'Sunset Gold', hex: '#F59E0B', image: '/assets/tablet_pro.jpg' },
+      { name: 'Burgundy Wine', hex: '#800020', image: '/assets/tablet_pro.jpg' },
       { name: 'Space Gray', hex: '#4B5563', image: '/assets/tablet_pro.jpg' }
     ],
     storageOptions: [
@@ -721,7 +721,7 @@ export const ALL_PRODUCTS: Product[] = [
     screenSize: '6.1-inch Super Fluid OLED',
     chip: 'Mango Neural A18',
     colors: [
-      { name: 'Sunburst Amber', hex: '#F59E0B', image: '/assets/phone_standard.jpg' },
+      { name: 'Burgundy Wine', hex: '#800020', image: '/assets/phone_standard.jpg' },
       { name: 'Ultramarine', hex: '#2563EB', image: '/assets/phone_standard.jpg' }
     ],
     storageOptions: [
@@ -792,7 +792,7 @@ export const ALL_PRODUCTS: Product[] = [
     batteryLife: '18 hours all-day',
     colors: [
       { name: 'Jet Black Polished', hex: '#0A0A0A', image: '/assets/wearable_black.jpg' },
-      { name: 'Amber Gold', hex: '#F59E0B', image: '/assets/wearable_ultra.jpg' }
+      { name: 'Burgundy Gold', hex: '#901435', image: '/assets/wearable_ultra.jpg' }
     ],
     specsSummary: [{ label: 'Thickness', value: '9.7 mm ultra-sleek' }],
     features: [{ title: 'Sleep Health', description: 'Breathing disturbance alerts.' }],
@@ -923,7 +923,7 @@ export const ALL_PRODUCTS: Product[] = [
     batteryLife: 'Up to 20 hours with ANC',
     colors: [
       { name: 'Midnight Charcoal', hex: '#1F2937', image: '/assets/earbuds_black.jpg' },
-      { name: 'Amber Sunset', hex: '#F59E0B', image: '/assets/earbuds_pro.jpg' }
+      { name: 'Burgundy Sunset', hex: '#800020', image: '/assets/earbuds_pro.jpg' }
     ],
     specsSummary: [{ label: 'Drivers', value: '40mm Mango designed dynamic driver' }],
     features: [{ title: 'Lossless Audio', description: 'Plug directly into Laptop or Tablet.' }],
@@ -1036,7 +1036,7 @@ export const ALL_PRODUCTS: Product[] = [
     basePrice: 79,
     filterTag: 'cases',
     colors: [
-      { name: 'Amber Gold', hex: '#F59E0B', image: '/assets/tablet_pro.jpg' },
+      { name: 'Burgundy Gold', hex: '#901435', image: '/assets/tablet_pro.jpg' },
       { name: 'Charcoal', hex: '#374151', image: '/assets/tablet_pro.jpg' }
     ],
     specsSummary: [{ label: 'Compatibility', value: 'Tablet Pro and Tablet Air' }],
@@ -1082,7 +1082,7 @@ export const ALL_PRODUCTS: Product[] = [
     basePrice: 99,
     filterTag: 'bands',
     colors: [
-      { name: 'Amber Orange', hex: '#EA580C', image: '/assets/wearable_ultra.jpg' },
+      { name: 'Burgundy Woven', hex: '#800020', image: '/assets/wearable_ultra.jpg' },
       { name: 'Olive Green', hex: '#047857', image: '/assets/wearable_black.jpg' }
     ],
     specsSummary: [{ label: 'Sizes', value: 'Fits 130–210mm wrists' }],

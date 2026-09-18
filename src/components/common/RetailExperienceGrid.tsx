@@ -51,8 +51,8 @@ export const RetailExperienceGrid: React.FC<RetailExperienceGridProps> = ({
       description: "Make your Mango device unmistakably yours. Engrave custom initials, lucky numbers, or emoji for free.",
       actionText: "Personalize yours",
       actionUrl: "/store/earbuds",
-      colorClass: "text-amber-600 dark:text-amber-400",
-      bgClass: "bg-amber-100 dark:bg-amber-950/60"
+      colorClass: "text-mango-600 dark:text-mango-400",
+      bgClass: "bg-mango-100 dark:bg-mango-950/60"
     }
   ];
 

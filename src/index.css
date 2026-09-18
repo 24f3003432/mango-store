@@ -3,9 +3,27 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
   body {
-    @apply bg-[#FBFBFD] dark:bg-[#0C0D0E] text-neutral-900 dark:text-neutral-100 antialiased;
+    @apply bg-[#F7F4F0] dark:bg-[#171614] text-[#1F1D1A] dark:text-[#F5F1EC] antialiased;
+    background-image: radial-gradient(circle at top, rgba(166, 110, 78, 0.08), transparent 30%), linear-gradient(180deg, #F7F4F0 0%, #F1EEE9 100%);
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  html.dark body {
+    background-image: radial-gradient(circle at top, rgba(194, 141, 104, 0.12), transparent 32%), linear-gradient(180deg, #171614 0%, #201D1A 100%);
+  }
+
+  ::selection {
+    background: rgba(166, 110, 78, 0.2);
   }
 }
 
@@ -18,11 +36,11 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(160, 160, 160, 0.3);
+  background: rgba(115, 143, 125, 0.35);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(160, 160, 160, 0.5);
+  background: rgba(115, 143, 125, 0.5);
 }
 
 /* Hide scrollbar for category ribbons */

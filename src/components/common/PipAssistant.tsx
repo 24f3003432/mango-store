@@ -114,7 +114,7 @@ export const PipAssistant: React.FC = () => {
           aria-label="Chat with Pip AI Assistant"
         >
           <div className="relative">
-            <Sparkles className="w-5 h-5 animate-pulse text-amber-100" />
+            <Sparkles className="w-5 h-5 animate-pulse text-mango-100" />
             <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-leaf-500 rounded-full border-2 border-white dark:border-black" />
           </div>
           <span className="font-semibold text-xs tracking-wide">
@@ -130,7 +130,7 @@ export const PipAssistant: React.FC = () => {
           <div className="p-4 bg-gradient-to-r from-mango-500 to-mango-600 text-white flex items-center justify-between shadow-sm">
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center">
-                <Sparkles className="w-4 h-4 text-amber-200" />
+                <Sparkles className="w-4 h-4 text-mango-200" />
               </div>
               <div>
                 <h3 className="font-bold text-sm leading-tight flex items-center gap-1.5">
@@ -139,7 +139,7 @@ export const PipAssistant: React.FC = () => {
                     AI Assistant
                   </span>
                 </h3>
-                <p className="text-[11px] text-amber-100/90">
+                <p className="text-[11px] text-mango-100/90">
                   Ready to help with specs & recommendations
                 </p>
               </div>

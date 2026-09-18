@@ -13,7 +13,7 @@ export const SoundPage: React.FC = () => {
         particleCount: 80,
         spread: 70,
         origin: { y: 0.7 },
-        colors: ['#F59E0B', '#10B981', '#FBBF24']
+        colors: ['#901435', '#C4284D', '#F9CBD6']
       });
     } catch {
       // ignore
@@ -24,13 +24,13 @@ export const SoundPage: React.FC = () => {
     <div className="min-h-screen bg-[#FBFBFD] dark:bg-[#0C0D0E] text-neutral-900 dark:text-neutral-100 transition-colors">
       {/* Hero Section */}
       <section className="py-16 sm:py-24 px-4 sm:px-6 max-w-5xl mx-auto text-center">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 text-mango-600 dark:text-mango-400 font-bold text-xs mb-4">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-mango-500/10 text-mango-600 dark:text-mango-400 font-bold text-xs mb-4">
           <Music className="w-4 h-4" />
           <span>Mango Sound Subscription</span>
         </div>
         <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-neutral-900 dark:text-white">
           Over 100 million songs. <br />
-          <span className="bg-gradient-to-r from-mango-500 to-amber-600 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-mango-600 to-rose-700 bg-clip-text text-transparent">
             All in Spatial Lossless Audio.
           </span>
         </h1>
@@ -41,7 +41,7 @@ export const SoundPage: React.FC = () => {
         {/* Interactive Audio Player Preview */}
         <div className="mt-12 p-6 sm:p-8 rounded-mango-lg bg-neutral-900 text-white max-w-2xl mx-auto shadow-2xl border border-neutral-800 relative overflow-hidden">
           <div className="flex items-center gap-4">
-            <div className="w-20 h-20 rounded-2xl bg-gradient-to-tr from-mango-600 to-amber-400 flex items-center justify-center shrink-0 shadow-lg relative">
+            <div className="w-20 h-20 rounded-2xl bg-gradient-to-tr from-mango-700 to-rose-600 flex items-center justify-center shrink-0 shadow-lg relative">
               <Music className="w-10 h-10 text-white animate-pulse" />
             </div>
 

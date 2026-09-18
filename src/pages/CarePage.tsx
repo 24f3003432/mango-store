@@ -29,7 +29,7 @@ export const CarePage: React.FC = () => {
         particleCount: 50,
         spread: 60,
         origin: { y: 0.6 },
-        colors: ['#F59E0B', '#10B981', '#FBBF24']
+        colors: ['#901435', '#C4284D', '#F9CBD6']
       });
     } catch {
       // ignore
@@ -121,7 +121,7 @@ export const CarePage: React.FC = () => {
           </div>
 
           <div className="p-6 rounded-mango bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card">
-            <div className="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-950 text-mango-600 flex items-center justify-center mb-4">
+            <div className="w-10 h-10 rounded-xl bg-mango-100 dark:bg-mango-950 text-mango-600 flex items-center justify-center mb-4">
               <BatteryCharging className="w-5 h-5" />
             </div>
             <h3 className="font-bold text-sm text-neutral-900 dark:text-white">

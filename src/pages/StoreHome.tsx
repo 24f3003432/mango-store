@@ -91,7 +91,7 @@ export const StoreHome: React.FC = () => {
         particleCount: 50,
         spread: 60,
         origin: { y: 0.6 },
-        colors: ['#F59E0B', '#10B981', '#FBBF24']
+        colors: ['#901435', '#C4284D', '#F9CBD6']
       });
     } catch {
       // ignore
@@ -152,7 +152,7 @@ export const StoreHome: React.FC = () => {
 
       {/* SECTION 1: CONTACT RETAIL BLOCK */}
       <section className="px-4 sm:px-6 max-w-7xl mx-auto my-4">
-        <div className="p-4 sm:p-5 rounded-mango bg-gradient-to-r from-mango-500/10 via-amber-500/5 to-emerald-500/10 border border-mango-300/40 dark:border-mango-500/20 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="p-4 sm:p-5 rounded-mango bg-gradient-to-r from-mango-500/10 via-rose-500/5 to-emerald-500/10 border border-mango-300/40 dark:border-mango-500/20 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3.5 text-left w-full md:w-auto">
             <div className="w-10 h-10 rounded-full bg-mango-500 text-white dark:text-black flex items-center justify-center shrink-0 shadow-sm">
               <PhoneCall className="w-5 h-5" />
@@ -566,7 +566,7 @@ export const StoreHome: React.FC = () => {
           {/* 4. Delivery */}
           <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card flex flex-col justify-between">
             <div>
-              <div className="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-950 text-amber-600 flex items-center justify-center mb-3">
+              <div className="w-10 h-10 rounded-xl bg-mango-100 dark:bg-mango-950 text-mango-600 flex items-center justify-center mb-3">
                 <Truck className="w-5 h-5" />
               </div>
               <span className="text-[10px] font-extrabold uppercase tracking-wider text-neutral-400">4. Delivery</span>
@@ -575,7 +575,7 @@ export const StoreHome: React.FC = () => {
                 Next-day doorstep delivery or 2-hour in-store pickup ready in a flash.
               </p>
             </div>
-            <span className="text-[11px] font-bold text-amber-600 dark:text-amber-400 mt-4 block">Delivery options &rarr;</span>
+            <span className="text-[11px] font-bold text-mango-600 dark:text-mango-400 mt-4 block">Delivery options &rarr;</span>
           </div>
 
           {/* 5. Personalization */}
@@ -617,7 +617,7 @@ export const StoreHome: React.FC = () => {
           </div>
 
           {/* Device Bundle Offer Highlight Banner */}
-          <div className="p-6 rounded-mango-lg bg-gradient-to-r from-mango-500 to-amber-600 text-white shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="p-6 rounded-mango-lg bg-gradient-to-r from-mango-700 via-mango-600 to-rose-800 text-white shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center shrink-0">
                 <Music className="w-6 h-6 text-white" />
@@ -627,7 +627,7 @@ export const StoreHome: React.FC = () => {
                   Hardware Bundle Offer
                 </span>
                 <h3 className="text-lg font-black mt-1">Get 3 Months of Mango Sound Free</h3>
-                <p className="text-xs text-amber-100">
+                <p className="text-xs text-mango-100">
                   Included automatically with the purchase of any Mango Laptop, Phone, Tablet, or Earbuds.
                 </p>
               </div>
@@ -696,10 +696,10 @@ export const StoreHome: React.FC = () => {
           {/* Card 1: Pip AI Assistant */}
           <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card flex flex-col justify-between group">
             <div>
-              <div className="w-11 h-11 rounded-2xl bg-amber-100 dark:bg-amber-950/80 text-amber-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <div className="w-11 h-11 rounded-2xl bg-mango-100 dark:bg-mango-950/80 text-mango-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                 <Sparkles className="w-6 h-6" />
               </div>
-              <span className="text-[10px] font-extrabold uppercase tracking-wider text-amber-600">On-Device Intelligence</span>
+              <span className="text-[10px] font-extrabold uppercase tracking-wider text-mango-600">On-Device Intelligence</span>
               <h3 className="text-lg font-bold text-neutral-900 dark:text-white mt-1">Pip AI Assistant</h3>
               <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-2 leading-relaxed">
                 Private contextual assistance built into the silicon core. Drafts emails, transcribes notes, and refines creative ideas without data leaving your device.

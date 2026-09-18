@@ -50,7 +50,7 @@ export const BagPage: React.FC = () => {
           particleCount: 40,
           spread: 60,
           origin: { y: 0.7 },
-          colors: ['#F59E0B', '#10B981', '#FBBF24']
+          colors: ['#901435', '#C4284D', '#F9CBD6']
         });
       } catch {
         // ignore

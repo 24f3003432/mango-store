@@ -23,16 +23,16 @@ export const MangoLogo: React.FC<MangoLogoProps> = ({
       >
         <defs>
           <linearGradient id="mangoFruitGrad" x1="20" y1="15" x2="85" y2="90" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#FBBF24" />
-            <stop offset="45%" stopColor="#F59E0B" />
-            <stop offset="100%" stopColor="#EA580C" />
+            <stop offset="0%" stopColor="#C4284D" />
+            <stop offset="45%" stopColor="#901435" />
+            <stop offset="100%" stopColor="#680A23" />
           </linearGradient>
           <linearGradient id="leafGrad" x1="45" y1="2" x2="70" y2="20" gradientUnits="userSpaceOnUse">
             <stop offset="0%" stopColor="#34D399" />
             <stop offset="100%" stopColor="#059669" />
           </linearGradient>
           <filter id="softGlow" x="-10%" y="-10%" width="120%" height="120%">
-            <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="#F59E0B" floodOpacity="0.25" />
+            <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="#901435" floodOpacity="0.35" />
           </filter>
         </defs>
 
