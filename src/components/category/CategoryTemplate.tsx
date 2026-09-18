@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { CategoryInfo, Product } from '../../types';
 import { useCart } from '../../context/CartContext';
@@ -7,6 +7,7 @@ import { ALL_PRODUCTS } from '../../data/products';
 import { 
   Check, 
   ChevronRight, 
+  ChevronLeft,
   Sparkles, 
   ArrowRight, 
   HelpCircle, 
@@ -123,27 +124,48 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
     return tradeCondition === 'flawless' ? base + 130 : base;
   };
 
+  // Ref for Section 1 Hero Model Gallery horizontal scroll
+  const galleryScrollRef = useRef<HTMLDivElement>(null);
+  const scrollGallery = (direction: 'left' | 'right') => {
+    if (galleryScrollRef.current) {
+      const scrollAmount = direction === 'left' ? -320 : 320;
+      galleryScrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#FBFBFD] dark:bg-[#0C0D0E] text-neutral-900 dark:text-neutral-100 transition-colors">
       
-      {/* SECTION 1: HERO MODEL GALLERY (Horizontal scroll of model images) */}
-      <section className="bg-white/80 dark:bg-[#121316]/80 backdrop-blur-md border-b border-neutral-200/70 dark:border-neutral-800 sticky top-12 z-30 transition-colors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex items-center space-x-8 sm:space-x-12 overflow-x-auto no-scrollbar py-3.5">
+      {/* SECTION 1: HERO MODEL GALLERY (Horizontal scroll of model images with smooth chevrons) */}
+      <section className="bg-white/85 dark:bg-[#121316]/85 backdrop-blur-md border-b border-neutral-200/70 dark:border-neutral-800 sticky top-12 z-30 transition-colors shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative group/ribbon">
+          {/* Scroll Left Button */}
+          <button
+            onClick={() => scrollGallery('left')}
+            aria-label="Scroll left"
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white/90 dark:bg-neutral-800/90 shadow-md border border-neutral-200/80 dark:border-neutral-700 flex items-center justify-center text-neutral-700 dark:text-neutral-200 opacity-0 group-hover/ribbon:opacity-100 transition-opacity duration-200 btn-press hover:scale-110 hover:text-mango-600 dark:hover:text-mango-400"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+
+          <div 
+            ref={galleryScrollRef}
+            className="flex items-center space-x-8 sm:space-x-12 overflow-x-auto no-scrollbar py-3.5 scroll-smooth px-6"
+          >
             {categoryInfo.models.map((model) => (
               <Link
                 key={model.name}
                 to={model.route}
-                className="group shrink-0 flex flex-col items-center text-center transition-all min-w-[76px]"
+                className="group shrink-0 flex flex-col items-center text-center transition-transform duration-300 min-w-[76px] hover:-translate-y-1"
               >
                 <div className="w-14 h-14 rounded-2xl bg-neutral-100 dark:bg-neutral-800 p-1 mb-1.5 border border-neutral-200/60 dark:border-neutral-700/60 overflow-hidden group-hover:scale-110 group-hover:border-mango-500 shadow-sm transition-all duration-300">
                   <img
                     src={model.image}
                     alt={model.name}
-                    className="w-full h-full object-cover rounded-xl"
+                    className="w-full h-full object-cover rounded-xl transition-transform duration-300 group-hover:scale-105"
                   />
                 </div>
-                <span className="text-[11px] font-semibold text-neutral-800 dark:text-neutral-200 group-hover:text-mango-600 dark:group-hover:text-mango-400 truncate max-w-[90px]">
+                <span className="text-[11px] font-semibold text-neutral-800 dark:text-neutral-200 group-hover:text-mango-600 dark:group-hover:text-mango-400 truncate max-w-[90px] transition-colors">
                   {model.name}
                 </span>
                 {model.badge ? (
@@ -151,19 +173,28 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
                     {model.badge}
                   </span>
                 ) : (
-                  <span className="text-[9px] text-neutral-400">
+                  <span className="text-[9px] text-neutral-400 group-hover:text-neutral-600 dark:group-hover:text-neutral-300 transition-colors">
                     Explore &rarr;
                   </span>
                 )}
               </Link>
             ))}
           </div>
+
+          {/* Scroll Right Button */}
+          <button
+            onClick={() => scrollGallery('right')}
+            aria-label="Scroll right"
+            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white/90 dark:bg-neutral-800/90 shadow-md border border-neutral-200/80 dark:border-neutral-700 flex items-center justify-center text-neutral-700 dark:text-neutral-200 opacity-0 group-hover/ribbon:opacity-100 transition-opacity duration-200 btn-press hover:scale-110 hover:text-mango-600 dark:hover:text-mango-400"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
         </div>
       </section>
 
       {/* Hero Category Banner */}
-      <section className="pt-12 pb-6 px-4 sm:px-6 max-w-7xl mx-auto text-center">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-mango-100 dark:bg-mango-950/60 text-mango-700 dark:text-mango-300 text-xs font-bold mb-3">
+      <section className="pt-12 pb-6 px-4 sm:px-6 max-w-7xl mx-auto text-center animate-fadeIn">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-mango-100 dark:bg-mango-950/60 text-mango-700 dark:text-mango-300 text-xs font-bold mb-3 shadow-mango-sm animate-pulse-subtle">
           <Sparkles className="w-3.5 h-3.5 text-mango-500" />
           <span>Mango {categoryInfo.displayName}</span>
         </div>
@@ -186,17 +217,17 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
               <button
                 key={filter.id}
                 onClick={() => setActiveFilter(filter.id)}
-                className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all shrink-0 ${
+                className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all shrink-0 btn-press ${
                   activeFilter === filter.id
-                    ? 'bg-neutral-900 text-white dark:bg-white dark:text-black shadow-sm scale-105'
-                    : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
+                    ? 'bg-neutral-900 text-white dark:bg-white dark:text-black shadow-sm scale-105 ring-2 ring-mango-500/30'
+                    : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-200 dark:hover:bg-neutral-700'
                 }`}
               >
                 {filter.label}
               </button>
             ))}
           </div>
-          <span className="text-xs text-neutral-400 shrink-0 ml-4">
+          <span className="text-xs text-neutral-400 shrink-0 ml-4 font-medium">
             Showing {filteredProducts.length} model{filteredProducts.length === 1 ? '' : 's'}
           </span>
         </div>
@@ -212,12 +243,12 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
             return (
               <div
                 key={product.id}
-                className="group rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200/80 dark:border-neutral-800/80 overflow-hidden shadow-card hover:shadow-2xl transition-all duration-300 flex flex-col justify-between"
+                className="group rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200/80 dark:border-neutral-800/80 overflow-hidden shadow-card hover:shadow-elevation dark:hover:shadow-elevation-dark interactive-card flex flex-col justify-between"
               >
                 {/* Visual Area with Live Color preview */}
-                <div className="relative p-6 pt-10 flex flex-col items-center bg-gradient-to-b from-neutral-50/60 to-white dark:from-neutral-900/40 dark:to-[#16171A]">
+                <div className="relative p-6 pt-10 flex flex-col items-center bg-gradient-to-b from-neutral-50/60 to-white dark:from-neutral-900/40 dark:to-[#16171A] overflow-hidden">
                   {product.badge && (
-                    <span className="absolute top-4 left-4 px-2.5 py-1 rounded-full bg-mango-500 text-white dark:text-black text-[10px] font-extrabold tracking-wide uppercase shadow-sm">
+                    <span className="absolute top-4 left-4 px-2.5 py-1 rounded-full bg-mango-500 text-white dark:text-black text-[10px] font-extrabold tracking-wide uppercase shadow-sm z-10">
                       {product.badge}
                     </span>
                   )}
@@ -227,7 +258,7 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
                       <img
                         src={activeColor.image}
                         alt={`${product.name} in ${activeColor.name}`}
-                        className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500"
+                        className="max-h-full max-w-full object-contain interactive-img transition-transform duration-500"
                       />
                     </div>
                   </Link>
@@ -238,10 +269,10 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
                       <button
                         key={c.name}
                         onClick={() => handleColorChange(product.id, idx)}
-                        className={`w-5 h-5 rounded-full border-2 transition-all ${
+                        className={`w-5 h-5 rounded-full border-2 transition-all swatch-ring ${
                           currentColorIdx === idx
-                            ? 'border-mango-500 scale-125 ring-2 ring-mango-400/30'
-                            : 'border-transparent hover:scale-110'
+                            ? 'border-mango-500 scale-125 ring-2 ring-mango-400/40 shadow-sm'
+                            : 'border-transparent hover:scale-110 opacity-80 hover:opacity-100'
                         }`}
                         style={{ backgroundColor: c.hex }}
                         title={c.name}
@@ -249,7 +280,7 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
                       />
                     ))}
                   </div>
-                  <span className="text-[11px] text-neutral-400 mt-1">
+                  <span className="text-[11px] text-neutral-400 mt-1 font-medium transition-colors">
                     {activeColor.name}
                   </span>
                 </div>
@@ -257,7 +288,7 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
                 {/* Card Information */}
                 <div className="p-6 flex-1 flex flex-col justify-between border-t border-neutral-100 dark:border-neutral-800">
                   <div>
-                    <h3 className="text-xl font-bold text-neutral-900 dark:text-white">
+                    <h3 className="text-xl font-bold text-neutral-900 dark:text-white group-hover:text-mango-600 dark:group-hover:text-mango-400 transition-colors">
                       {product.name}
                     </h3>
                     <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1 line-clamp-2">
@@ -267,15 +298,15 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
                     {/* Key Specs */}
                     <div className="mt-4 grid grid-cols-2 gap-2 text-[11px] text-neutral-600 dark:text-neutral-300">
                       {product.chip && (
-                        <div className="flex items-center gap-1.5 p-1.5 rounded-lg bg-neutral-100 dark:bg-neutral-800">
+                        <div className="flex items-center gap-1.5 p-1.5 rounded-lg bg-neutral-100 dark:bg-neutral-800 transition-transform hover:scale-[1.02]">
                           <Cpu className="w-3.5 h-3.5 text-mango-500 shrink-0" />
-                          <span className="truncate">{product.chip}</span>
+                          <span className="truncate font-medium">{product.chip}</span>
                         </div>
                       )}
                       {product.batteryLife && (
-                        <div className="flex items-center gap-1.5 p-1.5 rounded-lg bg-neutral-100 dark:bg-neutral-800">
+                        <div className="flex items-center gap-1.5 p-1.5 rounded-lg bg-neutral-100 dark:bg-neutral-800 transition-transform hover:scale-[1.02]">
                           <Battery className="w-3.5 h-3.5 text-leaf-500 shrink-0" />
-                          <span className="truncate">{product.batteryLife}</span>
+                          <span className="truncate font-medium">{product.batteryLife}</span>
                         </div>
                       )}
                     </div>
@@ -285,7 +316,7 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
                   <div className="mt-6 pt-4 border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-between">
                     <div>
                       <span className="text-[11px] text-neutral-400 block">From</span>
-                      <span className="text-lg font-bold text-neutral-900 dark:text-white">
+                      <span className="text-lg font-black text-neutral-900 dark:text-white">
                         ${product.basePrice.toLocaleString()}
                       </span>
                     </div>
@@ -294,7 +325,7 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
                       {/* Learn More -> PDP */}
                       <Link
                         to={`/store/${product.category}/${product.id}`}
-                        className="px-3.5 py-2 rounded-full bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-800 dark:text-neutral-200 text-xs font-semibold transition-colors"
+                        className="px-3.5 py-2 rounded-full bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-800 dark:text-neutral-200 text-xs font-semibold transition-all btn-press"
                       >
                         Learn more
                       </Link>
@@ -302,7 +333,7 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
                       {/* Buy -> Bag */}
                       <button
                         onClick={() => handleBuy(product)}
-                        className="px-4 py-2 rounded-full bg-mango-500 hover:bg-mango-600 text-white dark:text-black text-xs font-extrabold shadow-mango-sm transition-all"
+                        className="px-4 py-2 rounded-full bg-mango-500 hover:bg-mango-600 text-white dark:text-black text-xs font-extrabold shadow-mango-sm hover:shadow-mango-glow transition-all btn-press"
                       >
                         Buy
                       </button>
@@ -342,14 +373,14 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
             {categoryInfo.featureHighlights.map((feat, idx) => (
               <div
                 key={idx}
-                className="rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200/80 dark:border-neutral-800/80 overflow-hidden shadow-card flex flex-col justify-between group"
+                className="rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200/80 dark:border-neutral-800/80 overflow-hidden shadow-card hover:shadow-elevation dark:hover:shadow-elevation-dark interactive-card flex flex-col justify-between group"
               >
                 {/* Media Container with Play Video indicator if video exists */}
                 <div className="relative h-56 overflow-hidden bg-neutral-900">
                   <img
                     src={feat.image}
                     alt={feat.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-cover interactive-img transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
@@ -360,7 +391,7 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
                   {feat.videoUrl && (
                     <button
                       onClick={() => setActiveVideoUrl(feat.videoUrl!)}
-                      className="absolute bottom-4 right-4 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-mango-500 text-black text-xs font-bold hover:bg-mango-400 transition-colors shadow-lg"
+                      className="absolute bottom-4 right-4 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-mango-500 text-white font-bold text-xs hover:bg-mango-600 transition-all shadow-mango-sm hover:shadow-mango-glow btn-press"
                     >
                       <Play className="w-3.5 h-3.5 fill-current" />
                       <span>Watch Reel</span>
@@ -373,7 +404,7 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
                     <span className="text-[11px] font-bold text-mango-600 dark:text-mango-400 uppercase tracking-wide">
                       {feat.subtitle}
                     </span>
-                    <h3 className="text-xl font-bold text-neutral-900 dark:text-white mt-1">
+                    <h3 className="text-xl font-bold text-neutral-900 dark:text-white mt-1 group-hover:text-mango-600 dark:group-hover:text-mango-400 transition-colors">
                       {feat.title}
                     </h3>
                     <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-2 leading-relaxed">
@@ -383,7 +414,7 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
 
                   <div className="mt-6 pt-4 border-t border-neutral-100 dark:border-neutral-800 text-xs font-bold text-neutral-700 dark:text-neutral-300 flex items-center justify-between">
                     <span>Engineered by Mango</span>
-                    <span className="text-mango-600 dark:text-mango-400">&rarr;</span>
+                    <span className="text-mango-600 dark:text-mango-400 group-hover:translate-x-1 transition-transform">&rarr;</span>
                   </div>
                 </div>
               </div>
@@ -394,9 +425,9 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
 
       {/* SECTION 6: "HELP ME CHOOSE" (short multi-step Q&A widget ending in model recommendation) */}
       <section className="py-16 px-4 sm:px-6 max-w-4xl mx-auto">
-        <div className="p-8 sm:p-10 rounded-mango-lg bg-gradient-to-br from-mango-500/10 via-rose-500/5 to-transparent border border-mango-300/40 dark:border-mango-500/30 shadow-card">
+        <div className="p-8 sm:p-10 rounded-mango-lg bg-gradient-to-br from-mango-500/10 via-rose-500/5 to-transparent border border-mango-300/40 dark:border-mango-500/30 shadow-card hover:shadow-mango-glow transition-shadow duration-500">
           <div className="flex items-center gap-2 text-mango-600 dark:text-mango-400 font-bold text-xs uppercase tracking-wider mb-2">
-            <HelpCircle className="w-4 h-4" />
+            <HelpCircle className="w-4 h-4 animate-pulse-subtle" />
             <span>Interactive Device Matcher &bull; Step {quizStep} of 3</span>
           </div>
 
@@ -409,7 +440,7 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
 
           {/* Step 1: Workload */}
           {quizStep === 1 && (
-            <div className="mt-8 space-y-4 animate-fadeIn">
+            <div className="mt-8 space-y-4 animate-slide-up">
               <h3 className="font-bold text-sm text-neutral-900 dark:text-white">
                 1. What will be your primary usage?
               </h3>
@@ -422,10 +453,10 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
                   <button
                     key={item.id}
                     onClick={() => setQuizWorkload(item.id as any)}
-                    className={`p-4 rounded-xl border text-left transition-all ${
+                    className={`p-4 rounded-xl border text-left transition-all btn-press ${
                       quizWorkload === item.id
-                        ? 'border-mango-500 bg-white dark:bg-neutral-800 shadow-md ring-2 ring-mango-400/20'
-                        : 'border-neutral-200 dark:border-neutral-700 bg-white/60 dark:bg-neutral-800/60 hover:border-neutral-300'
+                        ? 'border-mango-500 bg-white dark:bg-neutral-800 shadow-md ring-2 ring-mango-400/30 -translate-y-0.5'
+                        : 'border-neutral-200 dark:border-neutral-700 bg-white/60 dark:bg-neutral-800/60 hover:border-neutral-300 hover:-translate-y-0.5'
                     }`}
                   >
                     <span className="font-bold text-xs text-neutral-900 dark:text-white block">{item.title}</span>
@@ -436,7 +467,7 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
               <div className="pt-4 flex justify-end">
                 <button
                   onClick={() => setQuizStep(2)}
-                  className="px-6 py-2 rounded-full bg-mango-500 text-white dark:text-black font-bold text-xs shadow-sm hover:bg-mango-600 transition-all flex items-center gap-1.5"
+                  className="px-6 py-2 rounded-full bg-mango-500 text-white font-bold text-xs shadow-mango-sm hover:shadow-mango-glow hover:bg-mango-600 transition-all flex items-center gap-1.5 btn-press"
                 >
                   <span>Next Step</span>
                   <ChevronRight className="w-3.5 h-3.5" />
@@ -447,7 +478,7 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
 
           {/* Step 2: Priority */}
           {quizStep === 2 && (
-            <div className="mt-8 space-y-4 animate-fadeIn">
+            <div className="mt-8 space-y-4 animate-slide-up">
               <h3 className="font-bold text-sm text-neutral-900 dark:text-white">
                 2. What feature matters most to you?
               </h3>
@@ -460,10 +491,10 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
                   <button
                     key={item.id}
                     onClick={() => setQuizPriority(item.id as any)}
-                    className={`p-4 rounded-xl border text-left transition-all ${
+                    className={`p-4 rounded-xl border text-left transition-all btn-press ${
                       quizPriority === item.id
-                        ? 'border-mango-500 bg-white dark:bg-neutral-800 shadow-md ring-2 ring-mango-400/20'
-                        : 'border-neutral-200 dark:border-neutral-700 bg-white/60 dark:bg-neutral-800/60 hover:border-neutral-300'
+                        ? 'border-mango-500 bg-white dark:bg-neutral-800 shadow-md ring-2 ring-mango-400/30 -translate-y-0.5'
+                        : 'border-neutral-200 dark:border-neutral-700 bg-white/60 dark:bg-neutral-800/60 hover:border-neutral-300 hover:-translate-y-0.5'
                     }`}
                   >
                     <span className="font-bold text-xs text-neutral-900 dark:text-white block">{item.title}</span>
@@ -471,16 +502,16 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
                   </button>
                 ))}
               </div>
-              <div className="pt-4 flex justify-between">
+              <div className="pt-4 flex justify-between items-center">
                 <button
                   onClick={() => setQuizStep(1)}
-                  className="text-xs text-neutral-500 hover:underline"
+                  className="text-xs text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors"
                 >
                   &larr; Back
                 </button>
                 <button
                   onClick={() => setQuizStep(3)}
-                  className="px-6 py-2 rounded-full bg-mango-500 text-white dark:text-black font-bold text-xs shadow-sm hover:bg-mango-600 transition-all flex items-center gap-1.5"
+                  className="px-6 py-2 rounded-full bg-mango-500 text-white font-bold text-xs shadow-mango-sm hover:shadow-mango-glow hover:bg-mango-600 transition-all flex items-center gap-1.5 btn-press"
                 >
                   <span>Next Step</span>
                   <ChevronRight className="w-3.5 h-3.5" />
@@ -491,7 +522,7 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
 
           {/* Step 3: Budget Range */}
           {quizStep === 3 && (
-            <div className="mt-8 space-y-4 animate-fadeIn">
+            <div className="mt-8 space-y-4 animate-slide-up">
               <h3 className="font-bold text-sm text-neutral-900 dark:text-white">
                 3. Target investment range?
               </h3>
@@ -504,10 +535,10 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
                   <button
                     key={item.id}
                     onClick={() => setQuizBudget(item.id as any)}
-                    className={`p-4 rounded-xl border text-left transition-all ${
+                    className={`p-4 rounded-xl border text-left transition-all btn-press ${
                       quizBudget === item.id
-                        ? 'border-mango-500 bg-white dark:bg-neutral-800 shadow-md ring-2 ring-mango-400/20'
-                        : 'border-neutral-200 dark:border-neutral-700 bg-white/60 dark:bg-neutral-800/60 hover:border-neutral-300'
+                        ? 'border-mango-500 bg-white dark:bg-neutral-800 shadow-md ring-2 ring-mango-400/30 -translate-y-0.5'
+                        : 'border-neutral-200 dark:border-neutral-700 bg-white/60 dark:bg-neutral-800/60 hover:border-neutral-300 hover:-translate-y-0.5'
                     }`}
                   >
                     <span className="font-bold text-xs text-neutral-900 dark:text-white block">{item.title}</span>
@@ -515,16 +546,16 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
                   </button>
                 ))}
               </div>
-              <div className="pt-4 flex justify-between">
+              <div className="pt-4 flex justify-between items-center">
                 <button
                   onClick={() => setQuizStep(2)}
-                  className="text-xs text-neutral-500 hover:underline"
+                  className="text-xs text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors"
                 >
                   &larr; Back
                 </button>
                 <button
                   onClick={calculateRecommendation}
-                  className="px-6 py-2 rounded-full bg-mango-500 text-white dark:text-black font-extrabold text-xs shadow-mango-sm hover:bg-mango-600 transition-all flex items-center gap-1.5"
+                  className="px-6 py-2 rounded-full bg-mango-500 text-white font-extrabold text-xs shadow-mango-sm hover:shadow-mango-glow hover:bg-mango-600 transition-all flex items-center gap-1.5 btn-press"
                 >
                   <span>Reveal Recommendation</span>
                   <Sparkles className="w-3.5 h-3.5" />
@@ -535,12 +566,12 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
 
           {/* Recommendation Output */}
           {quizStep === 4 && quizRecommendation && (
-            <div className="mt-8 p-6 rounded-2xl bg-white dark:bg-neutral-800 border-2 border-mango-500 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6 animate-fadeIn">
+            <div className="mt-8 p-6 rounded-2xl bg-white dark:bg-neutral-800 border-2 border-mango-500 shadow-mango-glow flex flex-col sm:flex-row items-center justify-between gap-6 animate-scale-up">
               <div className="flex items-center gap-5">
                 <img
                   src={quizRecommendation.colors[0]?.image}
                   alt={quizRecommendation.name}
-                  className="w-24 h-24 rounded-xl object-contain bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 p-2 shrink-0"
+                  className="w-24 h-24 rounded-xl object-contain bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 p-2 shrink-0 shadow-sm"
                 />
                 <div>
                   <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 text-[10px] font-bold uppercase mb-1">
@@ -561,13 +592,13 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
               <div className="flex flex-col gap-2 shrink-0 w-full sm:w-auto">
                 <Link
                   to={`/store/${quizRecommendation.category}/${quizRecommendation.id}`}
-                  className="px-5 py-2.5 rounded-full bg-mango-500 hover:bg-mango-600 text-white dark:text-black font-bold text-xs text-center shadow-mango-sm"
+                  className="px-5 py-2.5 rounded-full bg-mango-500 hover:bg-mango-600 text-white font-bold text-xs text-center shadow-mango-sm hover:shadow-mango-glow transition-all btn-press"
                 >
                   Configure This Match
                 </Link>
                 <button
                   onClick={() => setQuizStep(1)}
-                  className="text-xs text-neutral-500 hover:underline text-center"
+                  className="text-xs text-neutral-500 hover:underline text-center btn-press"
                 >
                   Retake quiz
                 </button>
@@ -595,11 +626,11 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
             </p>
 
             <div className="grid grid-cols-2 gap-4 pt-2">
-              <div className="p-3.5 rounded-xl bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800">
+              <div className="p-3.5 rounded-xl bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-sm transition-transform hover:scale-[1.02]">
                 <span className="font-bold text-xs text-neutral-900 dark:text-white block">Step 1: Trade In</span>
                 <span className="text-[11px] text-neutral-500 mt-0.5 block">Get up to $650 instant deduction</span>
               </div>
-              <div className="p-3.5 rounded-xl bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800">
+              <div className="p-3.5 rounded-xl bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-sm transition-transform hover:scale-[1.02]">
                 <span className="font-bold text-xs text-neutral-900 dark:text-white block">Step 2: Auto Transfer</span>
                 <span className="text-[11px] text-neutral-500 mt-0.5 block">Wireless migration assistant</span>
               </div>
@@ -631,10 +662,10 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
                   <button
                     key={dev.id}
                     onClick={() => setTradeDeviceType(dev.id)}
-                    className={`py-2 rounded-lg text-xs font-semibold capitalize transition-all ${
+                    className={`py-2 rounded-lg text-xs font-semibold capitalize transition-all btn-press ${
                       tradeDeviceType === dev.id
-                        ? 'bg-neutral-900 text-white dark:bg-white dark:text-black'
-                        : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400'
+                        ? 'bg-neutral-900 text-white dark:bg-white dark:text-black shadow-sm ring-2 ring-mango-500/30'
+                        : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700'
                     }`}
                   >
                     {dev.label}
@@ -650,16 +681,16 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
               <div className="grid grid-cols-2 gap-2 text-xs">
                 <button
                   onClick={() => setTradeCondition('good')}
-                  className={`p-2.5 rounded-lg border text-center font-medium transition-all ${
-                    tradeCondition === 'good' ? 'border-mango-500 bg-mango-50/20 dark:bg-mango-950/20 font-bold' : 'border-neutral-200 dark:border-neutral-700'
+                  className={`p-2.5 rounded-lg border text-center font-medium transition-all btn-press ${
+                    tradeCondition === 'good' ? 'border-mango-500 bg-mango-50/20 dark:bg-mango-950/20 font-bold ring-2 ring-mango-400/20' : 'border-neutral-200 dark:border-neutral-700'
                   }`}
                 >
                   Good (minor scratches)
                 </button>
                 <button
                   onClick={() => setTradeCondition('flawless')}
-                  className={`p-2.5 rounded-lg border text-center font-medium transition-all ${
-                    tradeCondition === 'flawless' ? 'border-mango-500 bg-mango-50/20 dark:bg-mango-950/20 font-bold' : 'border-neutral-200 dark:border-neutral-700'
+                  className={`p-2.5 rounded-lg border text-center font-medium transition-all btn-press ${
+                    tradeCondition === 'flawless' ? 'border-mango-500 bg-mango-50/20 dark:bg-mango-950/20 font-bold ring-2 ring-mango-400/20' : 'border-neutral-200 dark:border-neutral-700'
                   }`}
                 >
                   Flawless (like new)
@@ -679,7 +710,7 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
                   const target = products[0];
                   if (target) navigate(`/store/${target.category}/${target.id}`);
                 }}
-                className="px-4 py-2 rounded-full bg-mango-500 hover:bg-mango-600 text-white dark:text-black font-bold text-xs transition-colors"
+                className="px-4 py-2 rounded-full bg-mango-500 hover:bg-mango-600 text-white font-bold text-xs transition-all shadow-mango-sm hover:shadow-mango-glow btn-press"
               >
                 Apply to New Device
               </button>
@@ -701,10 +732,10 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
           </div>
           <Link
             to="/store/accessories"
-            className="text-xs font-semibold text-mango-600 dark:text-mango-400 hover:underline flex items-center gap-1"
+            className="text-xs font-semibold text-mango-600 dark:text-mango-400 hover:underline flex items-center gap-1 group"
           >
             <span>View all accessories</span>
-            <ChevronRight className="w-4 h-4" />
+            <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 
@@ -716,14 +747,14 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
             return (
               <div
                 key={item.id}
-                className="p-5 rounded-mango bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 flex flex-col justify-between shadow-card hover:shadow-xl transition-all"
+                className="p-5 rounded-mango bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 flex flex-col justify-between shadow-card hover:shadow-elevation dark:hover:shadow-elevation-dark interactive-card group"
               >
                 <div>
                   <div className="h-40 flex items-center justify-center overflow-hidden mb-3">
                     <img
                       src={activeColor.image}
                       alt={item.name}
-                      className="max-h-full max-w-full object-contain hover:scale-105 transition-transform"
+                      className="max-h-full max-w-full object-contain interactive-img transition-transform duration-500"
                     />
                   </div>
 
@@ -733,15 +764,15 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
                       <button
                         key={c.name}
                         onClick={() => setEssentialColorMap(prev => ({ ...prev, [item.id]: i }))}
-                        className={`w-3.5 h-3.5 rounded-full border ${currentIdx === i ? 'border-mango-500 scale-125' : 'border-transparent'}`}
+                        className={`w-3.5 h-3.5 rounded-full border transition-all swatch-ring ${currentIdx === i ? 'border-mango-500 scale-125 ring-2 ring-mango-400/40' : 'border-transparent hover:scale-110'}`}
                         style={{ backgroundColor: c.hex }}
                         title={c.name}
                       />
                     ))}
-                    <span className="text-[10px] text-neutral-400 ml-1">{activeColor.name}</span>
+                    <span className="text-[10px] text-neutral-400 ml-1 font-medium">{activeColor.name}</span>
                   </div>
 
-                  <h4 className="font-bold text-sm text-neutral-900 dark:text-white">{item.name}</h4>
+                  <h4 className="font-bold text-sm text-neutral-900 dark:text-white group-hover:text-mango-600 dark:group-hover:text-mango-400 transition-colors">{item.name}</h4>
                   <p className="text-xs text-neutral-500 mt-0.5 line-clamp-1">{item.tagline}</p>
                 </div>
 
@@ -764,7 +795,7 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
                       });
                       setIsCartOpen(true);
                     }}
-                    className="px-3.5 py-1.5 rounded-full bg-neutral-900 hover:bg-black text-white dark:bg-white dark:text-black text-xs font-bold transition-all"
+                    className="px-3.5 py-1.5 rounded-full bg-neutral-900 hover:bg-black text-white dark:bg-white dark:text-black text-xs font-bold transition-all btn-press"
                   >
                     Add to Bag
                   </button>
@@ -789,7 +820,7 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
       {/* Video Demonstration Modal */}
       {activeVideoUrl && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 animate-fadeIn">
-          <div className="bg-neutral-900 rounded-mango-lg overflow-hidden max-w-3xl w-full border border-neutral-800 relative shadow-2xl">
+          <div className="bg-neutral-900 rounded-mango-lg overflow-hidden max-w-3xl w-full border border-neutral-800 relative shadow-2xl animate-scale-up">
             <div className="p-4 flex items-center justify-between border-b border-neutral-800">
               <span className="text-xs font-bold text-white flex items-center gap-2">
                 <Play className="w-4 h-4 text-mango-500 fill-current" />
@@ -797,7 +828,7 @@ export const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categoryInfo
               </span>
               <button
                 onClick={() => setActiveVideoUrl(null)}
-                className="p-1 rounded-full text-neutral-400 hover:text-white"
+                className="p-1 rounded-full text-neutral-400 hover:text-white btn-press"
               >
                 <X className="w-5 h-5" />
               </button>

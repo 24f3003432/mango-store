@@ -110,12 +110,13 @@ export const PipAssistant: React.FC = () => {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="group relative flex items-center gap-2.5 px-4 py-3 rounded-full bg-gradient-to-r from-mango-500 to-mango-600 hover:from-mango-600 hover:to-mango-700 text-white shadow-mango-glow transition-all duration-300 hover:scale-105 active:scale-95"
+          className="group relative flex items-center gap-2.5 px-4 py-3 rounded-full bg-gradient-to-r from-mango-600 via-mango-500 to-rose-700 text-white shadow-mango-glow hover:shadow-elevation transition-all duration-300 hover:scale-105 active:scale-95 btn-press"
           aria-label="Chat with Pip AI Assistant"
         >
           <div className="relative">
-            <Sparkles className="w-5 h-5 animate-pulse text-mango-100" />
-            <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-leaf-500 rounded-full border-2 border-white dark:border-black" />
+            <Sparkles className="w-5 h-5 text-mango-100 animate-pulse" />
+            <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-emerald-500 rounded-full border-2 border-white dark:border-black animate-ping" />
+            <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-emerald-500 rounded-full border-2 border-white dark:border-black" />
           </div>
           <span className="font-semibold text-xs tracking-wide">
             Ask Pip
@@ -125,12 +126,12 @@ export const PipAssistant: React.FC = () => {
 
       {/* Assistant Window */}
       {isOpen && (
-        <div className="bg-white dark:bg-[#16171A] rounded-mango shadow-2xl border border-neutral-200 dark:border-neutral-800 w-[360px] sm:w-[400px] h-[520px] flex flex-col overflow-hidden animate-fadeIn">
+        <div className="bg-white dark:bg-[#16171A] rounded-mango shadow-elevation dark:shadow-elevation-dark border border-neutral-200 dark:border-neutral-800 w-[360px] sm:w-[400px] h-[520px] flex flex-col overflow-hidden animate-scale-up origin-bottom-right">
           {/* Header */}
-          <div className="p-4 bg-gradient-to-r from-mango-500 to-mango-600 text-white flex items-center justify-between shadow-sm">
+          <div className="p-4 bg-gradient-to-r from-mango-700 via-mango-600 to-rose-800 text-white flex items-center justify-between shadow-sm">
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center">
-                <Sparkles className="w-4 h-4 text-mango-200" />
+                <Sparkles className="w-4 h-4 text-mango-200 animate-pulse" />
               </div>
               <div>
                 <h3 className="font-bold text-sm leading-tight flex items-center gap-1.5">
@@ -146,7 +147,7 @@ export const PipAssistant: React.FC = () => {
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="p-1 rounded-full hover:bg-white/20 text-white transition-colors"
+              className="p-1 rounded-full hover:bg-white/20 text-white transition-colors btn-press"
               aria-label="Close Pip assistant"
             >
               <X className="w-5 h-5" />
@@ -158,18 +159,18 @@ export const PipAssistant: React.FC = () => {
             {messages.map((m, idx) => (
               <div
                 key={idx}
-                className={`flex gap-2.5 ${m.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                className={`flex gap-2.5 animate-slide-up ${m.sender === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 {m.sender === 'pip' && (
-                  <div className="w-6 h-6 rounded-full bg-mango-100 dark:bg-mango-950 text-mango-600 shrink-0 flex items-center justify-center mt-0.5">
+                  <div className="w-6 h-6 rounded-full bg-mango-100 dark:bg-mango-950 text-mango-600 shrink-0 flex items-center justify-center mt-0.5 shadow-xs">
                     <Bot className="w-3.5 h-3.5" />
                   </div>
                 )}
                 <div
-                  className={`max-w-[80%] p-3 rounded-2xl leading-relaxed ${
+                  className={`max-w-[80%] p-3 rounded-2xl leading-relaxed shadow-xs ${
                     m.sender === 'user'
                       ? 'bg-mango-500 text-white rounded-br-none'
-                      : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 rounded-bl-none'
+                      : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 rounded-bl-none border border-neutral-200/50 dark:border-neutral-700/50'
                   }`}
                 >
                   <p>{m.text}</p>
@@ -179,7 +180,7 @@ export const PipAssistant: React.FC = () => {
                         setIsOpen(false);
                         navigate(m.linkUrl!);
                       }}
-                      className="mt-2.5 inline-flex items-center gap-1 font-semibold text-mango-600 dark:text-mango-400 bg-white/80 dark:bg-neutral-900/80 px-2.5 py-1 rounded-full hover:underline text-[11px]"
+                      className="mt-2.5 inline-flex items-center gap-1 font-semibold text-mango-600 dark:text-mango-400 bg-white/90 dark:bg-neutral-900/90 px-2.5 py-1 rounded-full hover:underline text-[11px] btn-press shadow-xs"
                     >
                       <span>{m.linkText}</span>
                       <ArrowRight className="w-3 h-3" />
@@ -195,7 +196,7 @@ export const PipAssistant: React.FC = () => {
             ))}
 
             {isTyping && (
-              <div className="flex items-center gap-2 text-neutral-400 text-xs">
+              <div className="flex items-center gap-2 text-neutral-400 text-xs animate-slide-up">
                 <Bot className="w-4 h-4 text-mango-500 animate-pulse" />
                 <span className="italic">Pip is analyzing specs...</span>
               </div>
@@ -210,7 +211,7 @@ export const PipAssistant: React.FC = () => {
                 <button
                   key={index}
                   onClick={() => handleSend(prompt)}
-                  className="shrink-0 text-[11px] px-2.5 py-1 rounded-full bg-neutral-200/70 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-mango-100 hover:text-mango-700 dark:hover:bg-mango-950/80 dark:hover:text-mango-400 transition-colors"
+                  className="shrink-0 text-[11px] px-2.5 py-1 rounded-full bg-neutral-200/70 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-mango-100 hover:text-mango-700 dark:hover:bg-mango-950/80 dark:hover:text-mango-400 transition-colors btn-press"
                 >
                   {prompt}
                 </button>
@@ -231,12 +232,12 @@ export const PipAssistant: React.FC = () => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask Pip anything about Mango..."
-              className="flex-1 text-xs bg-neutral-100 dark:bg-neutral-800 px-3 py-2.5 rounded-full text-neutral-900 dark:text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-mango-500"
+              className="flex-1 text-xs bg-neutral-100 dark:bg-neutral-800 px-3.5 py-2.5 rounded-full text-neutral-900 dark:text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-mango-500"
             />
             <button
               type="submit"
               disabled={!input.trim()}
-              className="p-2.5 rounded-full bg-mango-500 disabled:opacity-40 hover:bg-mango-600 text-white dark:text-black transition-colors"
+              className="p-2.5 rounded-full bg-mango-500 disabled:opacity-40 hover:bg-mango-600 text-white transition-colors btn-press shadow-xs"
             >
               <Send className="w-3.5 h-3.5" />
             </button>

@@ -238,14 +238,14 @@ export const ProductDetailPage: React.FC = () => {
                 {/* Carousel Navigation Arrows */}
                 <button
                   onClick={() => setActiveMediaIdx(prev => (prev === 0 ? mediaGallery.length - 1 : prev - 1))}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 dark:bg-neutral-800/80 hover:bg-white dark:hover:bg-neutral-700 shadow-md transition-all opacity-0 group-hover:opacity-100"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-white/90 dark:bg-neutral-800/90 hover:bg-white dark:hover:bg-neutral-700 shadow-md transition-all opacity-0 group-hover:opacity-100 btn-press hover:scale-110 hover:text-mango-600 dark:hover:text-mango-400"
                   aria-label="Previous image"
                 >
                   <ChevronLeft className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => setActiveMediaIdx(prev => (prev === mediaGallery.length - 1 ? 0 : prev + 1))}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 dark:bg-neutral-800/80 hover:bg-white dark:hover:bg-neutral-700 shadow-md transition-all opacity-0 group-hover:opacity-100"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-white/90 dark:bg-neutral-800/90 hover:bg-white dark:hover:bg-neutral-700 shadow-md transition-all opacity-0 group-hover:opacity-100 btn-press hover:scale-110 hover:text-mango-600 dark:hover:text-mango-400"
                   aria-label="Next image"
                 >
                   <ChevronRight className="w-4 h-4" />
@@ -258,10 +258,10 @@ export const ProductDetailPage: React.FC = () => {
                   <button
                     key={idx}
                     onClick={() => setActiveMediaIdx(idx)}
-                    className={`w-14 h-14 rounded-xl border p-1 bg-white dark:bg-neutral-800 overflow-hidden shrink-0 transition-all ${
+                    className={`w-14 h-14 rounded-xl border p-1 bg-white dark:bg-neutral-800 overflow-hidden shrink-0 transition-all btn-press ${
                       activeMediaIdx === idx
-                        ? 'border-mango-500 scale-105 ring-2 ring-mango-400/30'
-                        : 'border-neutral-200 dark:border-neutral-700 opacity-70 hover:opacity-100'
+                        ? 'border-mango-500 scale-105 ring-2 ring-mango-400/40 shadow-sm'
+                        : 'border-neutral-200 dark:border-neutral-700 opacity-70 hover:opacity-100 hover:scale-105'
                     }`}
                   >
                     {m.type === 'video' ? (
@@ -278,9 +278,9 @@ export const ProductDetailPage: React.FC = () => {
           </div>
 
           {/* Right: Configurator Area */}
-          <div className="lg:col-span-5 space-y-7">
+          <div className="lg:col-span-5 space-y-7 animate-fadeIn">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-mango-600 dark:text-mango-400">
+              <span className="text-xs font-bold uppercase tracking-wider text-mango-600 dark:text-mango-400 inline-block animate-pulse-subtle">
                 Mango Custom Studio
               </span>
               <h1 className="text-3xl sm:text-4xl font-black text-neutral-900 dark:text-white mt-1">
@@ -291,15 +291,15 @@ export const ProductDetailPage: React.FC = () => {
               </p>
 
               {/* Price Banner */}
-              <div className="mt-4 p-4 rounded-xl bg-neutral-100 dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-700 flex items-center justify-between">
+              <div className="mt-4 p-4 rounded-xl bg-neutral-100 dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-700 flex items-center justify-between shadow-sm transition-all hover:border-mango-500/30">
                 <div>
-                  <span className="text-[11px] text-neutral-500 block">Total Due</span>
-                  <span className="text-2xl font-black text-neutral-900 dark:text-white">
+                  <span className="text-[11px] text-neutral-500 block font-medium">Total Due</span>
+                  <span className="text-2xl font-black text-neutral-900 dark:text-white transition-all">
                     ${finalCalculatedPrice.toLocaleString()}
                   </span>
                 </div>
                 <div className="text-right">
-                  <span className="text-[11px] text-neutral-500 block">0% APR Financing</span>
+                  <span className="text-[11px] text-neutral-500 block font-medium">0% APR Financing</span>
                   <span className="text-sm font-bold text-mango-600 dark:text-mango-400">
                     ${monthlyPayment}/mo. for 24 mo.
                   </span>
@@ -310,7 +310,7 @@ export const ProductDetailPage: React.FC = () => {
             {/* Color Swatch Picker */}
             <div className="space-y-2.5">
               <label className="block text-xs font-bold uppercase tracking-wider text-neutral-700 dark:text-neutral-300">
-                Finish: <span className="text-mango-600 dark:text-mango-400">{activeColor.name}</span>
+                Finish: <span className="text-mango-600 dark:text-mango-400 font-semibold">{activeColor.name}</span>
               </label>
               <div className="grid grid-cols-2 gap-2">
                 {product.colors.map((c, idx) => (
@@ -320,14 +320,14 @@ export const ProductDetailPage: React.FC = () => {
                       setSelectedColorIdx(idx);
                       setActiveMediaIdx(0);
                     }}
-                    className={`p-3 rounded-xl border text-left flex items-center gap-2.5 transition-all ${
+                    className={`p-3 rounded-xl border text-left flex items-center gap-2.5 transition-all btn-press ${
                       selectedColorIdx === idx
-                        ? 'border-mango-500 ring-2 ring-mango-400/20 bg-mango-50/30 dark:bg-mango-950/30 font-semibold'
-                        : 'border-neutral-200 dark:border-neutral-800 hover:border-neutral-300'
+                        ? 'border-mango-500 ring-2 ring-mango-400/30 bg-mango-50/40 dark:bg-mango-950/40 font-semibold shadow-sm -translate-y-0.5'
+                        : 'border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 hover:-translate-y-0.5'
                     }`}
                   >
                     <span
-                      className="w-4 h-4 rounded-full border border-black/10 shrink-0"
+                      className="w-4 h-4 rounded-full border border-black/10 shrink-0 swatch-ring shadow-xs"
                       style={{ backgroundColor: c.hex }}
                     />
                     <span className="text-xs text-neutral-800 dark:text-neutral-200 truncate">
@@ -349,10 +349,10 @@ export const ProductDetailPage: React.FC = () => {
                     <button
                       key={opt.size}
                       onClick={() => setSelectedStorageIdx(idx)}
-                      className={`w-full p-3.5 rounded-xl border text-left flex items-center justify-between transition-all ${
+                      className={`w-full p-3.5 rounded-xl border text-left flex items-center justify-between transition-all btn-press ${
                         selectedStorageIdx === idx
-                          ? 'border-mango-500 ring-2 ring-mango-400/20 bg-mango-50/30 dark:bg-mango-950/30 font-semibold'
-                          : 'border-neutral-200 dark:border-neutral-800 hover:border-neutral-300'
+                          ? 'border-mango-500 ring-2 ring-mango-400/30 bg-mango-50/40 dark:bg-mango-950/40 font-semibold shadow-sm -translate-y-0.5'
+                          : 'border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 hover:-translate-y-0.5'
                       }`}
                     >
                       <span className="text-xs font-semibold text-neutral-900 dark:text-white">
@@ -381,10 +381,10 @@ export const ProductDetailPage: React.FC = () => {
                   <button
                     key={tier.label}
                     onClick={() => setTradeInTier(tier.credit)}
-                    className={`p-3 rounded-xl border text-center transition-all ${
+                    className={`p-3 rounded-xl border text-center transition-all btn-press ${
                       tradeInTier === tier.credit
-                        ? 'border-mango-500 ring-2 ring-mango-400/20 bg-mango-50/30 dark:bg-mango-950/30 font-semibold'
-                        : 'border-neutral-200 dark:border-neutral-800 hover:border-neutral-300'
+                        ? 'border-mango-500 ring-2 ring-mango-400/30 bg-mango-50/40 dark:bg-mango-950/40 font-semibold shadow-sm -translate-y-0.5'
+                        : 'border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 hover:-translate-y-0.5'
                     }`}
                   >
                     <span className="block text-xs text-neutral-800 dark:text-neutral-200">
@@ -405,10 +405,10 @@ export const ProductDetailPage: React.FC = () => {
               </label>
               <div
                 onClick={() => setIncludeCarePlus(!includeCarePlus)}
-                className={`p-4 rounded-xl border cursor-pointer transition-all flex items-start gap-3 ${
+                className={`p-4 rounded-xl border cursor-pointer transition-all flex items-start gap-3 btn-press ${
                   includeCarePlus
-                    ? 'border-mango-500 ring-2 ring-mango-400/20 bg-mango-50/30 dark:bg-mango-950/30'
-                    : 'border-neutral-200 dark:border-neutral-800 hover:border-neutral-300'
+                    ? 'border-mango-500 ring-2 ring-mango-400/30 bg-mango-50/40 dark:bg-mango-950/40 shadow-sm'
+                    : 'border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700'
                 }`}
               >
                 <div className={`w-5 h-5 rounded-md border flex items-center justify-center shrink-0 mt-0.5 transition-colors ${
@@ -423,7 +423,7 @@ export const ProductDetailPage: React.FC = () => {
                       <ShieldCheck className="w-4 h-4 text-mango-500" />
                       Add Mango Care+
                     </span>
-                    <span className="text-mango-600 dark:text-mango-400">+${carePlusCost}</span>
+                    <span className="text-mango-600 dark:text-mango-400 font-extrabold">+${carePlusCost}</span>
                   </div>
                   <p className="text-neutral-500 mt-1 leading-relaxed text-[11px]">
                     Unlimited accidental damage incidents, same-day battery servicing, and 24/7 priority Pip AI & specialist tech support.
@@ -437,14 +437,14 @@ export const ProductDetailPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setShowEngraving(!showEngraving)}
-                className="text-xs font-semibold text-mango-600 dark:text-mango-400 flex items-center gap-1 hover:underline"
+                className="text-xs font-semibold text-mango-600 dark:text-mango-400 flex items-center gap-1 hover:underline btn-press"
               >
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>{showEngraving ? 'Remove Custom Engraving' : 'Add Free Laser Engraving'}</span>
               </button>
 
               {showEngraving && (
-                <div className="p-3 rounded-xl bg-neutral-100 dark:bg-neutral-800/60 border border-neutral-200 dark:border-neutral-700 animate-fadeIn">
+                <div className="p-3 rounded-xl bg-neutral-100 dark:bg-neutral-800/60 border border-neutral-200 dark:border-neutral-700 animate-slide-up">
                   <label className="block text-[11px] text-neutral-500 mb-1">
                     Enter text or initials (max 20 characters)
                   </label>
@@ -464,7 +464,7 @@ export const ProductDetailPage: React.FC = () => {
             <div className="pt-3 space-y-2.5">
               <button
                 onClick={handleAddProductToCart}
-                className="w-full py-4 rounded-full bg-mango-500 hover:bg-mango-600 text-white dark:text-black font-extrabold text-sm flex items-center justify-center gap-2 shadow-mango-glow hover:scale-[1.01] active:scale-[0.99] transition-all"
+                className="w-full py-4 rounded-full bg-mango-500 hover:bg-mango-600 text-white font-extrabold text-sm flex items-center justify-center gap-2 shadow-mango-glow hover:shadow-elevation transition-all btn-press"
               >
                 <span>Add to Bag &bull; ${finalCalculatedPrice.toLocaleString()}</span>
               </button>
@@ -487,13 +487,13 @@ export const ProductDetailPage: React.FC = () => {
 
       {/* 2. STICKY BUY BOX (Appears as user scrolls down past hero) */}
       {showStickyBuyBox && (
-        <div className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-[#16171A]/95 backdrop-blur-md border-t border-neutral-200 dark:border-neutral-800 shadow-2xl py-3 px-4 sm:px-6 animate-fadeIn">
+        <div className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-[#16171A]/95 backdrop-blur-md border-t border-neutral-200 dark:border-neutral-800 shadow-elevation dark:shadow-elevation-dark py-3 px-4 sm:px-6 animate-slide-up">
           <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <img
                 src={activeColor.image}
                 alt={product.name}
-                className="w-11 h-11 rounded-lg object-contain bg-neutral-100 dark:bg-neutral-800 p-1 shrink-0 border border-neutral-200/50 dark:border-neutral-700"
+                className="w-11 h-11 rounded-lg object-contain bg-neutral-100 dark:bg-neutral-800 p-1 shrink-0 border border-neutral-200/50 dark:border-neutral-700 shadow-xs"
               />
               <div className="min-w-0">
                 <h4 className="font-bold text-sm text-neutral-900 dark:text-white truncate">
@@ -518,7 +518,7 @@ export const ProductDetailPage: React.FC = () => {
               </div>
               <button
                 onClick={handleAddProductToCart}
-                className="px-6 py-2.5 rounded-full bg-mango-500 hover:bg-mango-600 text-white dark:text-black font-extrabold text-xs shadow-mango-sm flex items-center gap-1.5 transition-all"
+                className="px-6 py-2.5 rounded-full bg-mango-500 hover:bg-mango-600 text-white font-extrabold text-xs shadow-mango-sm hover:shadow-mango-glow flex items-center gap-1.5 transition-all btn-press"
               >
                 <ShoppingBag className="w-3.5 h-3.5" />
                 <span>Add to Bag</span>
@@ -554,11 +554,11 @@ export const ProductDetailPage: React.FC = () => {
             >
               {/* Media Card */}
               <div className={`lg:col-span-7 ${isReversed ? 'lg:order-2' : 'lg:order-1'}`}>
-                <div className="rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200/80 dark:border-neutral-800 p-8 sm:p-12 shadow-card flex items-center justify-center relative overflow-hidden group">
+                <div className="rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200/80 dark:border-neutral-800 p-8 sm:p-12 shadow-card hover:shadow-elevation dark:hover:shadow-elevation-dark interactive-card flex items-center justify-center relative overflow-hidden group">
                   <img
                     src={story.image}
                     alt={story.title}
-                    className="max-h-[380px] max-w-full object-contain group-hover:scale-105 transition-transform duration-700"
+                    className="max-h-[380px] max-w-full object-contain interactive-img transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
                 </div>
@@ -580,7 +580,7 @@ export const ProductDetailPage: React.FC = () => {
                 {story.stats && story.stats.length > 0 && (
                   <div className="grid grid-cols-2 gap-4 pt-4 border-t border-neutral-100 dark:border-neutral-800">
                     {story.stats.map((stat, sIdx) => (
-                      <div key={sIdx}>
+                      <div key={sIdx} className="transition-transform hover:scale-105">
                         <span className="text-2xl font-black text-neutral-900 dark:text-white block">
                           {stat.value}
                         </span>
@@ -609,7 +609,7 @@ export const ProductDetailPage: React.FC = () => {
 
           <div className="bg-white dark:bg-[#16171A] rounded-mango-lg border border-neutral-200 dark:border-neutral-800 divide-y divide-neutral-200 dark:divide-neutral-800 overflow-hidden shadow-card">
             {product.specsSummary.map((spec) => (
-              <div key={spec.label} className="p-4 sm:px-6 grid grid-cols-3 text-xs sm:text-sm">
+              <div key={spec.label} className="p-4 sm:px-6 grid grid-cols-3 text-xs sm:text-sm hover:bg-neutral-50/70 dark:hover:bg-neutral-800/40 transition-colors">
                 <span className="font-bold text-neutral-500 dark:text-neutral-400">
                   {spec.label}
                 </span>
@@ -618,13 +618,13 @@ export const ProductDetailPage: React.FC = () => {
                 </span>
               </div>
             ))}
-            <div className="p-4 sm:px-6 grid grid-cols-3 text-xs sm:text-sm">
+            <div className="p-4 sm:px-6 grid grid-cols-3 text-xs sm:text-sm hover:bg-neutral-50/70 dark:hover:bg-neutral-800/40 transition-colors">
               <span className="font-bold text-neutral-500 dark:text-neutral-400">Custom Silicon</span>
               <span className="col-span-2 text-neutral-900 dark:text-neutral-100 font-medium">
                 {product.chip || 'Mango Core G4 Pro'} with on-device Pip AI Neural Engine
               </span>
             </div>
-            <div className="p-4 sm:px-6 grid grid-cols-3 text-xs sm:text-sm">
+            <div className="p-4 sm:px-6 grid grid-cols-3 text-xs sm:text-sm hover:bg-neutral-50/70 dark:hover:bg-neutral-800/40 transition-colors">
               <span className="font-bold text-neutral-500 dark:text-neutral-400">Battery & Charging</span>
               <span className="col-span-2 text-neutral-900 dark:text-neutral-100 font-medium">
                 {product.batteryLife || 'Up to 18 hours'} with Fast MagLock Charging
@@ -656,27 +656,27 @@ export const ProductDetailPage: React.FC = () => {
               return (
                 <div
                   key={comp.id}
-                  className={`p-6 rounded-mango-lg border flex flex-col justify-between transition-all ${
+                  className={`p-6 rounded-mango-lg border flex flex-col justify-between interactive-card group transition-all ${
                     isCurrent
-                      ? 'bg-gradient-to-b from-mango-50/40 to-white dark:from-mango-950/20 dark:to-[#16171A] border-2 border-mango-500 shadow-xl'
-                      : 'bg-white dark:bg-[#16171A] border-neutral-200 dark:border-neutral-800 shadow-card'
+                      ? 'bg-gradient-to-b from-mango-50/40 to-white dark:from-mango-950/20 dark:to-[#16171A] border-2 border-mango-500 shadow-mango-glow'
+                      : 'bg-white dark:bg-[#16171A] border-neutral-200 dark:border-neutral-800 shadow-card hover:shadow-elevation dark:hover:shadow-elevation-dark'
                   }`}
                 >
                   <div>
                     {isCurrent && (
-                      <span className="inline-block px-2.5 py-0.5 rounded-full bg-mango-500 text-white dark:text-black text-[10px] font-extrabold uppercase tracking-wider mb-2">
+                      <span className="inline-block px-2.5 py-0.5 rounded-full bg-mango-500 text-white dark:text-black text-[10px] font-extrabold uppercase tracking-wider mb-2 shadow-xs">
                         Currently Viewing
                       </span>
                     )}
-                    <div className="h-44 flex items-center justify-center p-4">
+                    <div className="h-44 flex items-center justify-center p-4 overflow-hidden">
                       <img
                         src={comp.colors[0]?.image}
                         alt={comp.name}
-                        className="max-h-full max-w-full object-contain"
+                        className="max-h-full max-w-full object-contain interactive-img transition-transform duration-500"
                       />
                     </div>
 
-                    <h4 className="text-xl font-bold text-neutral-900 dark:text-white text-center mt-2">
+                    <h4 className="text-xl font-bold text-neutral-900 dark:text-white text-center mt-2 group-hover:text-mango-600 dark:group-hover:text-mango-400 transition-colors">
                       {comp.name}
                     </h4>
                     <p className="text-xs text-neutral-500 text-center mt-1">
@@ -710,14 +710,14 @@ export const ProductDetailPage: React.FC = () => {
                     {isCurrent ? (
                       <button
                         onClick={handleAddProductToCart}
-                        className="w-full py-2.5 rounded-full bg-mango-500 hover:bg-mango-600 text-white dark:text-black font-extrabold text-xs shadow-sm"
+                        className="w-full py-2.5 rounded-full bg-mango-500 hover:bg-mango-600 text-white font-extrabold text-xs shadow-mango-sm hover:shadow-mango-glow transition-all btn-press"
                       >
                         Buy {comp.name}
                       </button>
                     ) : (
                       <Link
                         to={`/store/${comp.category}/${comp.id}`}
-                        className="w-full py-2.5 rounded-full bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 text-neutral-900 dark:text-white font-bold text-xs flex items-center justify-center gap-1"
+                        className="w-full py-2.5 rounded-full bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 text-neutral-900 dark:text-white font-bold text-xs flex items-center justify-center gap-1 transition-all btn-press"
                       >
                         <span>Configure</span>
                         <ChevronRight className="w-3.5 h-3.5" />
@@ -743,10 +743,10 @@ export const ProductDetailPage: React.FC = () => {
             </div>
             <Link
               to="/store/accessories"
-              className="text-xs font-semibold text-mango-600 dark:text-mango-400 hover:underline flex items-center gap-1"
+              className="text-xs font-semibold text-mango-600 dark:text-mango-400 hover:underline flex items-center gap-1 group"
             >
               <span>Explore all</span>
-              <ChevronRight className="w-4 h-4" />
+              <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
 
@@ -754,17 +754,17 @@ export const ProductDetailPage: React.FC = () => {
             {relatedAccessories.map((acc) => (
               <div
                 key={acc.id}
-                className="p-5 rounded-mango bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 flex flex-col justify-between shadow-card hover:shadow-xl transition-all"
+                className="p-5 rounded-mango bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 flex flex-col justify-between shadow-card hover:shadow-elevation dark:hover:shadow-elevation-dark interactive-card group"
               >
                 <div>
                   <div className="h-40 flex items-center justify-center overflow-hidden mb-3">
                     <img
                       src={acc.colors[0]?.image}
                       alt={acc.name}
-                      className="max-h-full max-w-full object-contain hover:scale-105 transition-transform"
+                      className="max-h-full max-w-full object-contain interactive-img transition-transform duration-500"
                     />
                   </div>
-                  <h4 className="font-bold text-sm text-neutral-900 dark:text-white">{acc.name}</h4>
+                  <h4 className="font-bold text-sm text-neutral-900 dark:text-white group-hover:text-mango-600 dark:group-hover:text-mango-400 transition-colors">{acc.name}</h4>
                   <p className="text-xs text-neutral-500 mt-0.5 line-clamp-1">{acc.tagline}</p>
                 </div>
 
@@ -787,7 +787,7 @@ export const ProductDetailPage: React.FC = () => {
                       });
                       setIsCartOpen(true);
                     }}
-                    className="px-3.5 py-1.5 rounded-full bg-neutral-900 hover:bg-black text-white dark:bg-white dark:text-black text-xs font-bold transition-all"
+                    className="px-3.5 py-1.5 rounded-full bg-neutral-900 hover:bg-black text-white dark:bg-white dark:text-black text-xs font-bold transition-all btn-press"
                   >
                     Add to Bag
                   </button>
@@ -801,7 +801,7 @@ export const ProductDetailPage: React.FC = () => {
       {/* Video Modal */}
       {showVideoModal && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 animate-fadeIn">
-          <div className="bg-neutral-900 rounded-mango-lg overflow-hidden max-w-3xl w-full border border-neutral-800 relative shadow-2xl">
+          <div className="bg-neutral-900 rounded-mango-lg overflow-hidden max-w-3xl w-full border border-neutral-800 relative shadow-2xl animate-scale-up">
             <div className="p-4 flex items-center justify-between border-b border-neutral-800">
               <span className="text-xs font-bold text-white flex items-center gap-2">
                 <Play className="w-4 h-4 text-mango-500 fill-current" />
@@ -809,7 +809,7 @@ export const ProductDetailPage: React.FC = () => {
               </span>
               <button
                 onClick={() => setShowVideoModal(false)}
-                className="p-1 rounded-full text-neutral-400 hover:text-white"
+                className="p-1 rounded-full text-neutral-400 hover:text-white btn-press"
               >
                 <X className="w-5 h-5" />
               </button>

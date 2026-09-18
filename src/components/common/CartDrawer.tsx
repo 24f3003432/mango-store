@@ -39,7 +39,7 @@ export const CartDrawer: React.FC = () => {
             </div>
             <button
               onClick={() => setIsCartOpen(false)}
-              className="p-1.5 rounded-full text-neutral-400 hover:text-neutral-700 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+              className="p-1.5 rounded-full text-neutral-400 hover:text-neutral-700 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors btn-press"
             >
               <X className="w-5 h-5" />
             </button>
@@ -48,8 +48,8 @@ export const CartDrawer: React.FC = () => {
           {/* Cart Items List */}
           <div className="flex-1 overflow-y-auto p-5 space-y-4">
             {cart.length === 0 ? (
-              <div className="text-center py-16">
-                <div className="w-16 h-16 rounded-full bg-mango-50 dark:bg-mango-950/40 text-mango-500 flex items-center justify-center mx-auto mb-4">
+              <div className="text-center py-16 animate-fadeIn">
+                <div className="w-16 h-16 rounded-full bg-mango-50 dark:bg-mango-950/40 text-mango-500 flex items-center justify-center mx-auto mb-4 animate-pulse-subtle">
                   <ShoppingBag className="w-8 h-8" />
                 </div>
                 <h3 className="text-base font-semibold text-neutral-900 dark:text-white">
@@ -60,7 +60,7 @@ export const CartDrawer: React.FC = () => {
                 </p>
                 <button
                   onClick={() => setIsCartOpen(false)}
-                  className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-mango-500 hover:bg-mango-600 text-white dark:text-black font-semibold text-xs shadow-mango-sm transition-all"
+                  className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-mango-500 hover:bg-mango-600 text-white font-semibold text-xs shadow-mango-sm transition-all btn-press"
                 >
                   Continue Shopping
                 </button>
@@ -71,7 +71,7 @@ export const CartDrawer: React.FC = () => {
                 return (
                   <div
                     key={item.cartItemId}
-                    className="p-4 rounded-mango bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200/70 dark:border-neutral-800 flex gap-4 transition-all"
+                    className="p-4 rounded-mango bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200/70 dark:border-neutral-800 flex gap-4 transition-all hover:border-mango-500/30 animate-slide-up"
                   >
                     <img
                       src={item.selectedColor.image}
@@ -96,7 +96,7 @@ export const CartDrawer: React.FC = () => {
                         </div>
                         <button
                           onClick={() => removeFromCart(item.cartItemId)}
-                          className="text-neutral-400 hover:text-red-500 transition-colors p-1"
+                          className="text-neutral-400 hover:text-red-500 transition-colors p-1 btn-press"
                           title="Remove item"
                         >
                           <Trash2 className="w-4 h-4" />
@@ -121,14 +121,14 @@ export const CartDrawer: React.FC = () => {
                         <div className="flex items-center gap-2 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg px-2 py-1">
                           <button
                             onClick={() => updateQuantity(item.cartItemId, item.quantity - 1)}
-                            className="text-neutral-500 hover:text-neutral-800 dark:hover:text-white"
+                            className="text-neutral-500 hover:text-neutral-800 dark:hover:text-white btn-press"
                           >
                             <Minus className="w-3 h-3" />
                           </button>
                           <span className="text-xs font-semibold px-1">{item.quantity}</span>
                           <button
                             onClick={() => updateQuantity(item.cartItemId, item.quantity + 1)}
-                            className="text-neutral-500 hover:text-neutral-800 dark:hover:text-white"
+                            className="text-neutral-500 hover:text-neutral-800 dark:hover:text-white btn-press"
                           >
                             <Plus className="w-3 h-3" />
                           </button>
@@ -182,7 +182,7 @@ export const CartDrawer: React.FC = () => {
                     setIsCartOpen(false);
                     setIsCheckoutOpen(true);
                   }}
-                  className="w-full py-3 px-4 rounded-full bg-mango-500 hover:bg-mango-600 text-white dark:text-black font-bold text-sm flex items-center justify-center gap-2 shadow-mango-glow transition-all"
+                  className="w-full py-3 px-4 rounded-full bg-mango-500 hover:bg-mango-600 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-mango-glow hover:shadow-elevation transition-all btn-press"
                 >
                   <span>Proceed to Checkout</span>
                   <ArrowRight className="w-4 h-4" />
@@ -191,7 +191,7 @@ export const CartDrawer: React.FC = () => {
                 <Link
                   to="/bag"
                   onClick={() => setIsCartOpen(false)}
-                  className="w-full py-2.5 px-4 rounded-full bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 text-neutral-800 dark:text-neutral-200 font-bold text-xs flex items-center justify-center gap-1.5 transition-colors"
+                  className="w-full py-2.5 px-4 rounded-full bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 text-neutral-800 dark:text-neutral-200 font-bold text-xs flex items-center justify-center gap-1.5 transition-colors btn-press"
                 >
                   <span>Review Bag & Promo Codes</span>
                 </Link>

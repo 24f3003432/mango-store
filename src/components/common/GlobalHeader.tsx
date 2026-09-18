@@ -118,11 +118,11 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ onOpenSearch }) => {
           </nav>
 
           {/* Utility actions (Search, Bag, Theme, Mobile toggle) */}
-          <div className="flex items-center space-x-4 text-neutral-700 dark:text-neutral-300">
+          <div className="flex items-center space-x-3 text-neutral-700 dark:text-neutral-300">
             {/* Search Trigger */}
             <button
               onClick={onOpenSearch}
-              className="p-1.5 hover:text-mango-600 dark:hover:text-mango-400 transition-colors rounded-full focus:outline-none focus:ring-2 focus:ring-mango-500"
+              className="p-2 hover:text-mango-600 dark:hover:text-mango-400 hover:bg-neutral-100/80 dark:hover:bg-neutral-800/80 transition-all rounded-full focus:outline-none focus:ring-2 focus:ring-mango-500 btn-press"
               aria-label="Search Mango products"
               title="Search (Cmd+K)"
             >
@@ -132,12 +132,12 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ onOpenSearch }) => {
             {/* Shopping Bag */}
             <button
               onClick={() => setIsCartOpen(true)}
-              className="p-1.5 hover:text-mango-600 dark:hover:text-mango-400 transition-colors rounded-full relative focus:outline-none focus:ring-2 focus:ring-mango-500"
+              className="p-2 hover:text-mango-600 dark:hover:text-mango-400 hover:bg-neutral-100/80 dark:hover:bg-neutral-800/80 transition-all rounded-full relative focus:outline-none focus:ring-2 focus:ring-mango-500 btn-press"
               aria-label="Shopping Bag"
             >
               <ShoppingBag className="w-4 h-4" />
               {totalItems > 0 && (
-                <span className="absolute -top-1 -right-1 bg-mango-500 text-white dark:text-black font-bold text-[10px] w-4 h-4 rounded-full flex items-center justify-center animate-pulse">
+                <span className="absolute -top-0.5 -right-0.5 bg-mango-500 text-white dark:text-black font-bold text-[10px] w-4 h-4 rounded-full flex items-center justify-center animate-pulse-subtle shadow-mango-sm">
                   {totalItems}
                 </span>
               )}
@@ -146,21 +146,21 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ onOpenSearch }) => {
             {/* Dark / Light Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-1.5 hover:text-mango-600 dark:hover:text-mango-400 transition-colors rounded-full focus:outline-none focus:ring-2 focus:ring-mango-500"
+              className="p-2 hover:text-mango-600 dark:hover:text-mango-400 hover:bg-neutral-100/80 dark:hover:bg-neutral-800/80 transition-all rounded-full focus:outline-none focus:ring-2 focus:ring-mango-500 btn-press"
               aria-label="Toggle dark mode"
               title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
             >
               {theme === 'dark' ? (
-                <Sun className="w-4 h-4 text-mango-400" />
+                <Sun className="w-4 h-4 text-mango-400 transition-transform duration-300 hover:rotate-90" />
               ) : (
-                <Moon className="w-4 h-4 text-neutral-600" />
+                <Moon className="w-4 h-4 text-neutral-600 transition-transform duration-300 hover:-rotate-12" />
               )}
             </button>
 
             {/* Mobile Hamburger */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-1.5 hover:text-mango-600 dark:hover:text-mango-400 transition-colors"
+              className="lg:hidden p-2 hover:text-mango-600 dark:hover:text-mango-400 hover:bg-neutral-100/80 dark:hover:bg-neutral-800/80 rounded-full transition-colors btn-press"
               aria-label="Open navigation menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -175,7 +175,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ onOpenSearch }) => {
           onMouseEnter={() => {
             if (flyoutTimeoutRef.current) clearTimeout(flyoutTimeoutRef.current);
           }}
-          className="hidden lg:block absolute top-full left-0 w-full glass-nav border-b border-neutral-200/60 dark:border-neutral-800 shadow-2xl transition-all duration-200 animate-fadeIn"
+          className="hidden lg:block absolute top-full left-0 w-full glass-nav border-b border-neutral-200/60 dark:border-neutral-800 shadow-2xl transition-all duration-300 animate-slide-down origin-top"
         >
           <div className="max-w-7xl mx-auto px-8 py-8 grid grid-cols-12 gap-8 text-sm">
             {/* Column 1: Explore Lineup */}
@@ -183,19 +183,19 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ onOpenSearch }) => {
               <p className="text-[11px] font-semibold uppercase tracking-wider text-neutral-400 dark:text-neutral-500 mb-4">
                 Explore {activeCategoryInfo.displayName}
               </p>
-              <div className="space-y-3">
+              <div className="space-y-2">
                 {activeCategoryInfo.models.map((model) => (
                   <Link
                     key={model.name}
                     to={model.route}
-                    className="flex items-center justify-between group p-2 rounded-xl hover:bg-neutral-100/80 dark:hover:bg-neutral-800/80 transition-colors"
+                    className="flex items-center justify-between group p-2 rounded-xl hover:bg-neutral-100/90 dark:hover:bg-neutral-800/90 transition-all duration-200 hover:translate-x-1.5"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-neutral-100 dark:bg-neutral-800 overflow-hidden shrink-0 border border-neutral-200/50 dark:border-neutral-700/50">
+                      <div className="w-11 h-11 rounded-lg bg-neutral-100 dark:bg-neutral-800 overflow-hidden shrink-0 border border-neutral-200/50 dark:border-neutral-700/50 p-1">
                         <img
                           src={model.image}
                           alt={model.name}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                          className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
                         />
                       </div>
                       <div>

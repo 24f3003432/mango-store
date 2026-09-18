@@ -136,12 +136,12 @@ export const StoreHome: React.FC = () => {
               <Link
                 key={cat.key}
                 to={cat.route}
-                className="group shrink-0 flex flex-col items-center text-center p-2 rounded-2xl hover:bg-neutral-100 dark:hover:bg-neutral-800/60 transition-all min-w-[80px]"
+                className="group shrink-0 flex flex-col items-center text-center p-2 rounded-2xl hover:bg-neutral-100 dark:hover:bg-neutral-800/60 transition-transform duration-300 min-w-[80px] hover:-translate-y-1 btn-press"
               >
-                <div className="w-13 h-13 rounded-2xl bg-white dark:bg-neutral-800 border border-neutral-200/80 dark:border-neutral-700/60 flex items-center justify-center mb-1.5 p-3 shadow-sm group-hover:scale-105 group-hover:border-mango-500 transition-all">
+                <div className="w-13 h-13 rounded-2xl bg-white dark:bg-neutral-800 border border-neutral-200/80 dark:border-neutral-700/60 flex items-center justify-center mb-1.5 p-3 shadow-sm group-hover:scale-110 group-hover:border-mango-500 transition-all duration-300">
                   <Icon className="w-5 h-5 text-neutral-700 dark:text-neutral-300 group-hover:text-mango-500 transition-colors" />
                 </div>
-                <span className="text-xs font-semibold text-neutral-800 dark:text-neutral-200 group-hover:text-mango-600 dark:group-hover:text-mango-400">
+                <span className="text-xs font-semibold text-neutral-800 dark:text-neutral-200 group-hover:text-mango-600 dark:group-hover:text-mango-400 transition-colors">
                   {cat.displayName}
                 </span>
               </Link>
@@ -151,10 +151,10 @@ export const StoreHome: React.FC = () => {
       </section>
 
       {/* SECTION 1: CONTACT RETAIL BLOCK */}
-      <section className="px-4 sm:px-6 max-w-7xl mx-auto my-4">
-        <div className="p-4 sm:p-5 rounded-mango bg-gradient-to-r from-mango-500/10 via-rose-500/5 to-emerald-500/10 border border-mango-300/40 dark:border-mango-500/20 flex flex-col md:flex-row items-center justify-between gap-4">
+      <section className="px-4 sm:px-6 max-w-7xl mx-auto my-4 animate-fadeIn">
+        <div className="p-4 sm:p-5 rounded-mango bg-gradient-to-r from-mango-500/10 via-rose-500/5 to-emerald-500/10 border border-mango-300/40 dark:border-mango-500/20 flex flex-col md:flex-row items-center justify-between gap-4 shadow-sm hover:shadow-mango-sm transition-shadow">
           <div className="flex items-center gap-3.5 text-left w-full md:w-auto">
-            <div className="w-10 h-10 rounded-full bg-mango-500 text-white dark:text-black flex items-center justify-center shrink-0 shadow-sm">
+            <div className="w-10 h-10 rounded-full bg-mango-500 text-white flex items-center justify-center shrink-0 shadow-sm animate-pulse-subtle">
               <PhoneCall className="w-5 h-5" />
             </div>
             <div>
@@ -173,7 +173,7 @@ export const StoreHome: React.FC = () => {
           <div className="flex items-center gap-2 w-full md:w-auto justify-end">
             <a
               href="tel:18006962646"
-              className="px-4 py-2 rounded-full bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-xs font-semibold hover:border-mango-500 transition-colors shrink-0"
+              className="px-4 py-2 rounded-full bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-xs font-semibold hover:border-mango-500 transition-colors shrink-0 btn-press"
             >
               Call 1-800-MY-MANGO
             </a>
@@ -182,7 +182,7 @@ export const StoreHome: React.FC = () => {
                 const el = document.querySelector('button[aria-label="Chat with Pip AI Assistant"]') as HTMLButtonElement;
                 if (el) el.click();
               }}
-              className="px-4 py-2 rounded-full bg-mango-500 hover:bg-mango-600 text-white dark:text-black text-xs font-bold shadow-mango-sm transition-all shrink-0"
+              className="px-4 py-2 rounded-full bg-mango-500 hover:bg-mango-600 text-white text-xs font-bold shadow-mango-sm hover:shadow-mango-glow transition-all shrink-0 btn-press"
             >
               Chat Online
             </button>
@@ -194,12 +194,12 @@ export const StoreHome: React.FC = () => {
       <section className="px-4 sm:px-6 max-w-7xl mx-auto my-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Card 1: Find a Mango Store */}
-          <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200/80 dark:border-neutral-800 shadow-card flex items-start justify-between">
+          <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200/80 dark:border-neutral-800 shadow-card hover:shadow-elevation dark:hover:shadow-elevation-dark interactive-card flex items-start justify-between group">
             <div className="space-y-2">
-              <div className="w-10 h-10 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center text-mango-500">
+              <div className="w-10 h-10 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center text-mango-500 group-hover:scale-110 transition-transform">
                 <MapPin className="w-5 h-5" />
               </div>
-              <h3 className="text-lg font-bold text-neutral-900 dark:text-white">
+              <h3 className="text-lg font-bold text-neutral-900 dark:text-white group-hover:text-mango-600 dark:group-hover:text-mango-400 transition-colors">
                 Find a Mango Store
               </h3>
               <p className="text-xs text-neutral-500 dark:text-neutral-400 max-w-sm leading-relaxed">
@@ -208,10 +208,10 @@ export const StoreHome: React.FC = () => {
               <div className="pt-2">
                 <button
                   onClick={() => setShowLocatorModal(true)}
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-mango-600 dark:text-mango-400 hover:underline"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-mango-600 dark:text-mango-400 hover:underline btn-press"
                 >
                   <span>Launch Store Locator</span>
-                  <ChevronRight className="w-3.5 h-3.5" />
+                  <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </div>
@@ -222,12 +222,12 @@ export const StoreHome: React.FC = () => {
           </div>
 
           {/* Card 2: Find a Specialist */}
-          <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200/80 dark:border-neutral-800 shadow-card flex items-start justify-between">
+          <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200/80 dark:border-neutral-800 shadow-card hover:shadow-elevation dark:hover:shadow-elevation-dark interactive-card flex items-start justify-between group">
             <div className="space-y-2">
-              <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 flex items-center justify-center group-hover:scale-110 transition-transform">
                 <Calendar className="w-5 h-5" />
               </div>
-              <h3 className="text-lg font-bold text-neutral-900 dark:text-white">
+              <h3 className="text-lg font-bold text-neutral-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                 Book a 1-on-1 Specialist Session
               </h3>
               <p className="text-xs text-neutral-500 dark:text-neutral-400 max-w-sm leading-relaxed">
@@ -236,10 +236,10 @@ export const StoreHome: React.FC = () => {
               <div className="pt-2">
                 <button
                   onClick={() => setShowSessionModal(true)}
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline btn-press"
                 >
                   <span>Reserve Free Session</span>
-                  <ChevronRight className="w-3.5 h-3.5" />
+                  <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </div>
@@ -264,10 +264,10 @@ export const StoreHome: React.FC = () => {
           </div>
           <Link
             to="/store/laptop"
-            className="text-xs font-bold text-mango-600 dark:text-mango-400 hover:underline flex items-center gap-1"
+            className="text-xs font-bold text-mango-600 dark:text-mango-400 hover:underline flex items-center gap-1 group"
           >
             <span>View all</span>
-            <ChevronRight className="w-4 h-4" />
+            <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 
@@ -275,19 +275,19 @@ export const StoreHome: React.FC = () => {
           {latestLaunches.map((product) => (
             <div
               key={product.id}
-              className="group rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200/80 dark:border-neutral-800 p-6 flex flex-col justify-between shadow-card hover:shadow-2xl transition-all duration-300"
+              className="group rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200/80 dark:border-neutral-800 p-6 flex flex-col justify-between shadow-card hover:shadow-elevation dark:hover:shadow-elevation-dark interactive-card transition-all duration-300"
             >
               <div>
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full bg-mango-100 dark:bg-mango-950 text-mango-700 dark:text-mango-400">
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-mango-100 dark:bg-mango-950 text-mango-700 dark:text-mango-400 shadow-xs">
                     {product.badge || 'New'}
                   </span>
-                  <span className="text-xs font-bold text-neutral-500">
+                  <span className="text-xs font-black text-neutral-600 dark:text-neutral-300">
                     From ${product.basePrice.toLocaleString()}
                   </span>
                 </div>
 
-                <h3 className="text-2xl font-black text-neutral-900 dark:text-white mt-3 group-hover:text-mango-500 transition-colors">
+                <h3 className="text-2xl font-black text-neutral-900 dark:text-white mt-3 group-hover:text-mango-600 dark:group-hover:text-mango-400 transition-colors">
                   {product.name}
                 </h3>
                 <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1 line-clamp-2">
@@ -299,7 +299,7 @@ export const StoreHome: React.FC = () => {
                     <img
                       src={product.colors[0]?.image}
                       alt={product.name}
-                      className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500"
+                      className="max-h-full max-w-full object-contain interactive-img transition-transform duration-500"
                     />
                   </div>
                 </Link>
@@ -308,13 +308,13 @@ export const StoreHome: React.FC = () => {
               <div className="pt-4 border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-between">
                 <Link
                   to={`/store/${product.category}`}
-                  className="text-xs font-semibold text-neutral-600 dark:text-neutral-400 hover:text-mango-500"
+                  className="text-xs font-semibold text-neutral-600 dark:text-neutral-400 hover:text-mango-600 dark:hover:text-mango-400 transition-colors"
                 >
                   Explore {product.category} &rarr;
                 </Link>
                 <Link
                   to={`/store/${product.category}/${product.id}`}
-                  className="px-4 py-2 rounded-full bg-mango-500 hover:bg-mango-600 text-white dark:text-black text-xs font-extrabold shadow-mango-sm transition-all"
+                  className="px-4 py-2 rounded-full bg-mango-500 hover:bg-mango-600 text-white text-xs font-extrabold shadow-mango-sm hover:shadow-mango-glow transition-all btn-press"
                 >
                   Buy Now
                 </Link>
@@ -352,14 +352,14 @@ export const StoreHome: React.FC = () => {
             return (
               <div
                 key={item.id}
-                className="p-5 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 flex flex-col justify-between shadow-card hover:shadow-xl transition-all"
+                className="p-5 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 flex flex-col justify-between shadow-card hover:shadow-elevation dark:hover:shadow-elevation-dark interactive-card group"
               >
                 <div>
                   <div className="h-40 flex items-center justify-center overflow-hidden mb-3">
                     <img
                       src={activeColor.image}
                       alt={item.name}
-                      className="max-h-full max-w-full object-contain hover:scale-105 transition-transform"
+                      className="max-h-full max-w-full object-contain interactive-img transition-transform duration-500"
                     />
                   </div>
 
@@ -369,15 +369,15 @@ export const StoreHome: React.FC = () => {
                       <button
                         key={c.name}
                         onClick={() => setAccessoryColorMap(prev => ({ ...prev, [item.id]: i }))}
-                        className={`w-3.5 h-3.5 rounded-full border ${currentIdx === i ? 'border-mango-500 scale-125 ring-1 ring-mango-400' : 'border-transparent'}`}
+                        className={`w-3.5 h-3.5 rounded-full border transition-all swatch-ring ${currentIdx === i ? 'border-mango-500 scale-125 ring-2 ring-mango-400/40 shadow-xs' : 'border-transparent hover:scale-110'}`}
                         style={{ backgroundColor: c.hex }}
                         title={c.name}
                       />
                     ))}
-                    <span className="text-[10px] text-neutral-400 ml-1 truncate">{activeColor.name}</span>
+                    <span className="text-[10px] text-neutral-400 ml-1 font-medium truncate">{activeColor.name}</span>
                   </div>
 
-                  <h4 className="font-bold text-sm text-neutral-900 dark:text-white">{item.name}</h4>
+                  <h4 className="font-bold text-sm text-neutral-900 dark:text-white group-hover:text-mango-600 dark:group-hover:text-mango-400 transition-colors">{item.name}</h4>
                   <p className="text-xs text-neutral-500 mt-0.5 line-clamp-1">{item.tagline}</p>
                 </div>
 
@@ -400,7 +400,7 @@ export const StoreHome: React.FC = () => {
                       });
                       setIsCartOpen(true);
                     }}
-                    className="px-3.5 py-1.5 rounded-full bg-neutral-900 hover:bg-black text-white dark:bg-white dark:text-black text-xs font-bold transition-all"
+                    className="px-3.5 py-1.5 rounded-full bg-neutral-900 hover:bg-black text-white dark:bg-white dark:text-black text-xs font-bold transition-all btn-press"
                   >
                     Add to Bag
                   </button>
@@ -425,12 +425,12 @@ export const StoreHome: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* 1. Specialist Chat CTA */}
-            <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card flex flex-col justify-between">
+            <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card hover:shadow-elevation dark:hover:shadow-elevation-dark interactive-card flex flex-col justify-between group">
               <div>
-                <div className="w-10 h-10 rounded-xl bg-mango-100 dark:bg-mango-950 text-mango-600 flex items-center justify-center mb-4">
+                <div className="w-10 h-10 rounded-xl bg-mango-100 dark:bg-mango-950 text-mango-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <MessageSquare className="w-5 h-5" />
                 </div>
-                <h3 className="font-bold text-base text-neutral-900 dark:text-white">
+                <h3 className="font-bold text-base text-neutral-900 dark:text-white group-hover:text-mango-600 dark:group-hover:text-mango-400 transition-colors">
                   Shop 1-on-1 with a Specialist
                 </h3>
                 <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-2 leading-relaxed">
@@ -443,21 +443,21 @@ export const StoreHome: React.FC = () => {
                     const el = document.querySelector('button[aria-label="Chat with Pip AI Assistant"]') as HTMLButtonElement;
                     if (el) el.click();
                   }}
-                  className="text-xs font-bold text-mango-600 dark:text-mango-400 hover:underline flex items-center gap-1"
+                  className="text-xs font-bold text-mango-600 dark:text-mango-400 hover:underline flex items-center gap-1 btn-press"
                 >
                   <span>Chat with an expert now</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </div>
 
             {/* 2. Free Guided Sessions CTA */}
-            <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card flex flex-col justify-between">
+            <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card hover:shadow-elevation dark:hover:shadow-elevation-dark interactive-card flex flex-col justify-between group">
               <div>
-                <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 flex items-center justify-center mb-4">
+                <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Calendar className="w-5 h-5" />
                 </div>
-                <h3 className="font-bold text-base text-neutral-900 dark:text-white">
+                <h3 className="font-bold text-base text-neutral-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                   Free Guided Sessions
                 </h3>
                 <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-2 leading-relaxed">
@@ -467,21 +467,21 @@ export const StoreHome: React.FC = () => {
               <div className="mt-6 pt-4 border-t border-neutral-100 dark:border-neutral-800">
                 <button
                   onClick={() => setShowSessionModal(true)}
-                  className="text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-1"
+                  className="text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-1 btn-press"
                 >
                   <span>Explore calendar & book</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </div>
 
             {/* 3. New Devices Explainer */}
-            <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card flex flex-col justify-between">
+            <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card hover:shadow-elevation dark:hover:shadow-elevation-dark interactive-card flex flex-col justify-between group">
               <div>
-                <div className="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-950 text-blue-600 flex items-center justify-center mb-4">
+                <div className="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-950 text-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <BookOpen className="w-5 h-5" />
                 </div>
-                <h3 className="font-bold text-base text-neutral-900 dark:text-white">
+                <h3 className="font-bold text-base text-neutral-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                   Setting Up Your New Device
                 </h3>
                 <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-2 leading-relaxed">
@@ -491,10 +491,10 @@ export const StoreHome: React.FC = () => {
               <div className="mt-6 pt-4 border-t border-neutral-100 dark:border-neutral-800">
                 <Link
                   to="/care"
-                  className="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
+                  className="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1 group"
                 >
                   <span>Quick start setup guide</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </div>
@@ -519,78 +519,78 @@ export const StoreHome: React.FC = () => {
         {/* 5-item Retail Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
           {/* 1. Financing */}
-          <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card flex flex-col justify-between">
+          <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card hover:shadow-elevation dark:hover:shadow-elevation-dark interactive-card flex flex-col justify-between group">
             <div>
-              <div className="w-10 h-10 rounded-xl bg-mango-100 dark:bg-mango-950 text-mango-600 flex items-center justify-center mb-3">
+              <div className="w-10 h-10 rounded-xl bg-mango-100 dark:bg-mango-950 text-mango-600 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                 <CreditCard className="w-5 h-5" />
               </div>
               <span className="text-[10px] font-extrabold uppercase tracking-wider text-neutral-400">1. Financing</span>
-              <h4 className="font-bold text-sm text-neutral-900 dark:text-white mt-1">0% APR Over 24 Mo.</h4>
+              <h4 className="font-bold text-sm text-neutral-900 dark:text-white mt-1 group-hover:text-mango-600 dark:group-hover:text-mango-400 transition-colors">0% APR Over 24 Mo.</h4>
               <p className="text-xs text-neutral-500 mt-1.5 leading-relaxed">
                 Pay in low monthly installments with zero interest on the Mango Card.
               </p>
             </div>
-            <span className="text-[11px] font-bold text-mango-600 dark:text-mango-400 mt-4 block">Calculate monthly &rarr;</span>
+            <span className="text-[11px] font-bold text-mango-600 dark:text-mango-400 mt-4 block group-hover:translate-x-1 transition-transform">Calculate monthly &rarr;</span>
           </div>
 
           {/* 2. Payment */}
-          <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card flex flex-col justify-between">
+          <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card hover:shadow-elevation dark:hover:shadow-elevation-dark interactive-card flex flex-col justify-between group">
             <div>
-              <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 flex items-center justify-center mb-3">
+              <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                 <DollarSign className="w-5 h-5" />
               </div>
               <span className="text-[10px] font-extrabold uppercase tracking-wider text-neutral-400">2. Payment</span>
-              <h4 className="font-bold text-sm text-neutral-900 dark:text-white mt-1">Trade-In & Split Pay</h4>
+              <h4 className="font-bold text-sm text-neutral-900 dark:text-white mt-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Trade-In & Split Pay</h4>
               <p className="text-xs text-neutral-500 mt-1.5 leading-relaxed">
                 Apply instant trade-in credit up to $650 or split between two cards.
               </p>
             </div>
-            <span className="text-[11px] font-bold text-emerald-600 dark:text-emerald-400 mt-4 block">Estimate credit &rarr;</span>
+            <span className="text-[11px] font-bold text-emerald-600 dark:text-emerald-400 mt-4 block group-hover:translate-x-1 transition-transform">Estimate credit &rarr;</span>
           </div>
 
           {/* 3. Customization */}
-          <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card flex flex-col justify-between">
+          <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card hover:shadow-elevation dark:hover:shadow-elevation-dark interactive-card flex flex-col justify-between group">
             <div>
-              <div className="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-950 text-blue-600 flex items-center justify-center mb-3">
+              <div className="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-950 text-blue-600 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                 <Sliders className="w-5 h-5" />
               </div>
               <span className="text-[10px] font-extrabold uppercase tracking-wider text-neutral-400">3. Customization</span>
-              <h4 className="font-bold text-sm text-neutral-900 dark:text-white mt-1">Built to Your Spec</h4>
+              <h4 className="font-bold text-sm text-neutral-900 dark:text-white mt-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Built to Your Spec</h4>
               <p className="text-xs text-neutral-500 mt-1.5 leading-relaxed">
                 Configure unified memory to 128GB, studio SSDs, and nano-texture glass.
               </p>
             </div>
-            <span className="text-[11px] font-bold text-blue-600 dark:text-blue-400 mt-4 block">Custom studio &rarr;</span>
+            <span className="text-[11px] font-bold text-blue-600 dark:text-blue-400 mt-4 block group-hover:translate-x-1 transition-transform">Custom studio &rarr;</span>
           </div>
 
           {/* 4. Delivery */}
-          <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card flex flex-col justify-between">
+          <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card hover:shadow-elevation dark:hover:shadow-elevation-dark interactive-card flex flex-col justify-between group">
             <div>
-              <div className="w-10 h-10 rounded-xl bg-mango-100 dark:bg-mango-950 text-mango-600 flex items-center justify-center mb-3">
+              <div className="w-10 h-10 rounded-xl bg-mango-100 dark:bg-mango-950 text-mango-600 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                 <Truck className="w-5 h-5" />
               </div>
               <span className="text-[10px] font-extrabold uppercase tracking-wider text-neutral-400">4. Delivery</span>
-              <h4 className="font-bold text-sm text-neutral-900 dark:text-white mt-1">Free Express Courier</h4>
+              <h4 className="font-bold text-sm text-neutral-900 dark:text-white mt-1 group-hover:text-mango-600 dark:group-hover:text-mango-400 transition-colors">Free Express Courier</h4>
               <p className="text-xs text-neutral-500 mt-1.5 leading-relaxed">
                 Next-day doorstep delivery or 2-hour in-store pickup ready in a flash.
               </p>
             </div>
-            <span className="text-[11px] font-bold text-mango-600 dark:text-mango-400 mt-4 block">Delivery options &rarr;</span>
+            <span className="text-[11px] font-bold text-mango-600 dark:text-mango-400 mt-4 block group-hover:translate-x-1 transition-transform">Delivery options &rarr;</span>
           </div>
 
           {/* 5. Personalization */}
-          <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card flex flex-col justify-between">
+          <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card hover:shadow-elevation dark:hover:shadow-elevation-dark interactive-card flex flex-col justify-between group">
             <div>
-              <div className="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-950 text-purple-600 flex items-center justify-center mb-3">
+              <div className="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-950 text-purple-600 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                 <Sparkles className="w-5 h-5" />
               </div>
               <span className="text-[10px] font-extrabold uppercase tracking-wider text-neutral-400">5. Personalization</span>
-              <h4 className="font-bold text-sm text-neutral-900 dark:text-white mt-1">Free Laser Engraving</h4>
+              <h4 className="font-bold text-sm text-neutral-900 dark:text-white mt-1 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">Free Laser Engraving</h4>
               <p className="text-xs text-neutral-500 mt-1.5 leading-relaxed">
                 Engrave emoji, names, or special dates onto Earbuds and Tablets.
               </p>
             </div>
-            <span className="text-[11px] font-bold text-purple-600 dark:text-purple-400 mt-4 block">Preview engraving &rarr;</span>
+            <span className="text-[11px] font-bold text-purple-600 dark:text-purple-400 mt-4 block group-hover:translate-x-1 transition-transform">Preview engraving &rarr;</span>
           </div>
         </div>
       </section>
@@ -634,7 +634,7 @@ export const StoreHome: React.FC = () => {
             </div>
             <Link
               to="/sound"
-              className="px-5 py-2.5 rounded-full bg-white text-mango-800 font-bold text-xs hover:bg-neutral-100 transition-colors shrink-0 shadow-sm"
+              className="px-5 py-2.5 rounded-full bg-white text-mango-800 font-bold text-xs hover:bg-neutral-100 transition-colors shrink-0 shadow-sm btn-press"
             >
               Claim 3 Months
             </Link>
@@ -642,40 +642,49 @@ export const StoreHome: React.FC = () => {
 
           {/* Subscription Plan Horizontal Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-6 rounded-mango bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 flex flex-col justify-between shadow-card">
+            <div className="p-6 rounded-mango bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 flex flex-col justify-between shadow-card hover:shadow-elevation dark:hover:shadow-elevation-dark interactive-card group">
               <div>
                 <span className="text-xs font-bold text-neutral-400 uppercase">Student Tier</span>
                 <div className="flex items-baseline gap-1 my-1">
                   <span className="text-3xl font-black text-neutral-900 dark:text-white">$4.99</span>
-                  <span className="text-xs text-neutral-500">/mo</span>
+                  <span className="text-xs text-neutral-500 font-medium">/mo</span>
                 </div>
                 <p className="text-xs text-neutral-500">Ad-free high-res audio for verified campus students.</p>
               </div>
-              <Link to="/sound" className="mt-4 text-xs font-bold text-mango-600 hover:underline">Start trial &rarr;</Link>
+              <Link to="/sound" className="mt-4 text-xs font-bold text-mango-600 hover:underline flex items-center gap-1">
+                <span>Start trial</span>
+                <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
+              </Link>
             </div>
 
-            <div className="p-6 rounded-mango bg-white dark:bg-[#16171A] border-2 border-mango-500 flex flex-col justify-between shadow-xl">
+            <div className="p-6 rounded-mango bg-white dark:bg-[#16171A] border-2 border-mango-500 flex flex-col justify-between shadow-mango-glow interactive-card group">
               <div>
                 <span className="text-xs font-bold text-mango-600 uppercase">Individual Tier</span>
                 <div className="flex items-baseline gap-1 my-1">
                   <span className="text-3xl font-black text-neutral-900 dark:text-white">$10.99</span>
-                  <span className="text-xs text-neutral-500">/mo</span>
+                  <span className="text-xs text-neutral-500 font-medium">/mo</span>
                 </div>
                 <p className="text-xs text-neutral-500">Spatial Audio with dynamic head tracking and offline downloads.</p>
               </div>
-              <Link to="/sound" className="mt-4 text-xs font-bold text-mango-600 hover:underline">Start trial &rarr;</Link>
+              <Link to="/sound" className="mt-4 text-xs font-bold text-mango-600 hover:underline flex items-center gap-1">
+                <span>Start trial</span>
+                <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
+              </Link>
             </div>
 
-            <div className="p-6 rounded-mango bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 flex flex-col justify-between shadow-card">
+            <div className="p-6 rounded-mango bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 flex flex-col justify-between shadow-card hover:shadow-elevation dark:hover:shadow-elevation-dark interactive-card group">
               <div>
                 <span className="text-xs font-bold text-neutral-400 uppercase">Family Tier</span>
                 <div className="flex items-baseline gap-1 my-1">
                   <span className="text-3xl font-black text-neutral-900 dark:text-white">$16.99</span>
-                  <span className="text-xs text-neutral-500">/mo</span>
+                  <span className="text-xs text-neutral-500 font-medium">/mo</span>
                 </div>
                 <p className="text-xs text-neutral-500">Up to 6 family accounts with individual sound profiles.</p>
               </div>
-              <Link to="/sound" className="mt-4 text-xs font-bold text-mango-600 hover:underline">Start trial &rarr;</Link>
+              <Link to="/sound" className="mt-4 text-xs font-bold text-mango-600 hover:underline flex items-center gap-1">
+                <span>Start trial</span>
+                <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
+              </Link>
             </div>
           </div>
         </div>
@@ -694,13 +703,13 @@ export const StoreHome: React.FC = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Card 1: Pip AI Assistant */}
-          <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card flex flex-col justify-between group">
+          <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card hover:shadow-elevation dark:hover:shadow-elevation-dark interactive-card flex flex-col justify-between group">
             <div>
               <div className="w-11 h-11 rounded-2xl bg-mango-100 dark:bg-mango-950/80 text-mango-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Sparkles className="w-6 h-6" />
+                <Sparkles className="w-6 h-6 animate-pulse-subtle" />
               </div>
               <span className="text-[10px] font-extrabold uppercase tracking-wider text-mango-600">On-Device Intelligence</span>
-              <h3 className="text-lg font-bold text-neutral-900 dark:text-white mt-1">Pip AI Assistant</h3>
+              <h3 className="text-lg font-bold text-neutral-900 dark:text-white mt-1 group-hover:text-mango-600 dark:group-hover:text-mango-400 transition-colors">Pip AI Assistant</h3>
               <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-2 leading-relaxed">
                 Private contextual assistance built into the silicon core. Drafts emails, transcribes notes, and refines creative ideas without data leaving your device.
               </p>
@@ -710,60 +719,64 @@ export const StoreHome: React.FC = () => {
                 const el = document.querySelector('button[aria-label="Chat with Pip AI Assistant"]') as HTMLButtonElement;
                 if (el) el.click();
               }}
-              className="mt-6 pt-4 border-t border-neutral-100 dark:border-neutral-800 text-xs font-bold text-mango-600 text-left hover:underline"
+              className="mt-6 pt-4 border-t border-neutral-100 dark:border-neutral-800 text-xs font-bold text-mango-600 text-left hover:underline flex items-center justify-between btn-press"
             >
-              Talk with Pip now &rarr;
+              <span>Talk with Pip now</span>
+              <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
             </button>
           </div>
 
           {/* Card 2: Mango Ecosystem */}
-          <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card flex flex-col justify-between group">
+          <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card hover:shadow-elevation dark:hover:shadow-elevation-dark interactive-card flex flex-col justify-between group">
             <div>
               <div className="w-11 h-11 rounded-2xl bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                 <Layers className="w-6 h-6" />
               </div>
               <span className="text-[10px] font-extrabold uppercase tracking-wider text-emerald-600">Seamless Continuity</span>
-              <h3 className="text-lg font-bold text-neutral-900 dark:text-white mt-1">Mango Ecosystem</h3>
+              <h3 className="text-lg font-bold text-neutral-900 dark:text-white mt-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Mango Ecosystem</h3>
               <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-2 leading-relaxed">
                 Copy on your Phone and paste immediately on your Laptop. Extend your workspace wirelessly to your Tablet with instantaneous zero-lag display sharing.
               </p>
             </div>
-            <Link to="/store/laptop" className="mt-6 pt-4 border-t border-neutral-100 dark:border-neutral-800 text-xs font-bold text-emerald-600 hover:underline">
-              Explore continuity &rarr;
+            <Link to="/store/laptop" className="mt-6 pt-4 border-t border-neutral-100 dark:border-neutral-800 text-xs font-bold text-emerald-600 hover:underline flex items-center justify-between">
+              <span>Explore continuity</span>
+              <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
             </Link>
           </div>
 
           {/* Card 3: Mango Care+ */}
-          <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card flex flex-col justify-between group">
+          <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card hover:shadow-elevation dark:hover:shadow-elevation-dark interactive-card flex flex-col justify-between group">
             <div>
               <div className="w-11 h-11 rounded-2xl bg-blue-100 dark:bg-blue-950/80 text-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                 <ShieldCheck className="w-6 h-6" />
               </div>
               <span className="text-[10px] font-extrabold uppercase tracking-wider text-blue-600">Protection & Peace of Mind</span>
-              <h3 className="text-lg font-bold text-neutral-900 dark:text-white mt-1">Mango Care+</h3>
+              <h3 className="text-lg font-bold text-neutral-900 dark:text-white mt-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Mango Care+</h3>
               <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-2 leading-relaxed">
                 Unlimited incidents of accidental drop coverage, same-day screen and battery replacements, and 24/7 priority access to senior Mango engineers.
               </p>
             </div>
-            <Link to="/care" className="mt-6 pt-4 border-t border-neutral-100 dark:border-neutral-800 text-xs font-bold text-blue-600 hover:underline">
-              Learn about Care+ &rarr;
+            <Link to="/care" className="mt-6 pt-4 border-t border-neutral-100 dark:border-neutral-800 text-xs font-bold text-blue-600 hover:underline flex items-center justify-between">
+              <span>Learn about Care+</span>
+              <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
             </Link>
           </div>
 
           {/* Card 4: Mango Native Apps */}
-          <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card flex flex-col justify-between group">
+          <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card hover:shadow-elevation dark:hover:shadow-elevation-dark interactive-card flex flex-col justify-between group">
             <div>
               <div className="w-11 h-11 rounded-2xl bg-purple-100 dark:bg-purple-950/80 text-purple-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                 <Zap className="w-6 h-6" />
               </div>
               <span className="text-[10px] font-extrabold uppercase tracking-wider text-purple-600">Built-in Software</span>
-              <h3 className="text-lg font-bold text-neutral-900 dark:text-white mt-1">Mango Native Apps</h3>
+              <h3 className="text-lg font-bold text-neutral-900 dark:text-white mt-1 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">Mango Native Apps</h3>
               <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-2 leading-relaxed">
                 Engineered specifically for Mango Silicon. Experience Mango Notes, Mango Health vital monitoring, and Mango Studio creative apps without subscription fees.
               </p>
             </div>
-            <Link to="/store" className="mt-6 pt-4 border-t border-neutral-100 dark:border-neutral-800 text-xs font-bold text-purple-600 hover:underline">
-              Discover native apps &rarr;
+            <Link to="/store" className="mt-6 pt-4 border-t border-neutral-100 dark:border-neutral-800 text-xs font-bold text-purple-600 hover:underline flex items-center justify-between">
+              <span>Discover native apps</span>
+              <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
             </Link>
           </div>
         </div>
@@ -781,12 +794,12 @@ export const StoreHome: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Promo 1: Student & Campus */}
-            <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card flex flex-col justify-between">
+            <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card hover:shadow-elevation dark:hover:shadow-elevation-dark interactive-card flex flex-col justify-between group">
               <div>
-                <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-mango-100 dark:bg-mango-950 text-mango-700 dark:text-mango-400">
+                <span className="text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full bg-mango-100 dark:bg-mango-950 text-mango-700 dark:text-mango-400">
                   Education Discount
                 </span>
-                <h3 className="text-lg font-bold text-neutral-900 dark:text-white mt-2">
+                <h3 className="text-lg font-bold text-neutral-900 dark:text-white mt-2 group-hover:text-mango-600 dark:group-hover:text-mango-400 transition-colors">
                   College Students Save Up to $200
                 </h3>
                 <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1.5 leading-relaxed">
@@ -795,17 +808,17 @@ export const StoreHome: React.FC = () => {
               </div>
               <Link to="/store/laptop" className="mt-6 text-xs font-bold text-mango-600 hover:underline flex items-center gap-1">
                 <span>Verify student status</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
 
             {/* Promo 2: Certified Refurbished */}
-            <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card flex flex-col justify-between">
+            <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card hover:shadow-elevation dark:hover:shadow-elevation-dark interactive-card flex flex-col justify-between group">
               <div>
-                <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400">
+                <span className="text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400">
                   Certified Refurbished
                 </span>
-                <h3 className="text-lg font-bold text-neutral-900 dark:text-white mt-2">
+                <h3 className="text-lg font-bold text-neutral-900 dark:text-white mt-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                   Save Up to 25% on Inspected Gear
                 </h3>
                 <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1.5 leading-relaxed">
@@ -814,17 +827,17 @@ export const StoreHome: React.FC = () => {
               </div>
               <Link to="/store" className="mt-6 text-xs font-bold text-emerald-600 hover:underline flex items-center gap-1">
                 <span>Browse refurbished stock</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
 
             {/* Promo 3: Business & Bulk Upgrades */}
-            <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card flex flex-col justify-between">
+            <div className="p-6 rounded-mango-lg bg-white dark:bg-[#16171A] border border-neutral-200 dark:border-neutral-800 shadow-card hover:shadow-elevation dark:hover:shadow-elevation-dark interactive-card flex flex-col justify-between group">
               <div>
-                <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-400">
+                <span className="text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-400">
                   Mango For Business
                 </span>
-                <h3 className="text-lg font-bold text-neutral-900 dark:text-white mt-2">
+                <h3 className="text-lg font-bold text-neutral-900 dark:text-white mt-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                   Volume Pricing for Teams
                 </h3>
                 <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1.5 leading-relaxed">
@@ -833,7 +846,7 @@ export const StoreHome: React.FC = () => {
               </div>
               <Link to="/store" className="mt-6 text-xs font-bold text-blue-600 hover:underline flex items-center gap-1">
                 <span>Contact enterprise sales</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
           </div>
@@ -843,13 +856,13 @@ export const StoreHome: React.FC = () => {
       {/* Store Locator Modal */}
       {showLocatorModal && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-md flex items-center justify-center p-4 animate-fadeIn">
-          <div className="bg-white dark:bg-[#16171A] rounded-mango-lg max-w-lg w-full border border-neutral-200 dark:border-neutral-800 shadow-2xl overflow-hidden">
+          <div className="bg-white dark:bg-[#16171A] rounded-mango-lg max-w-lg w-full border border-neutral-200 dark:border-neutral-800 shadow-2xl overflow-hidden animate-scale-up">
             <div className="p-4 border-b border-neutral-200 dark:border-neutral-800 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-mango-500" />
                 <h4 className="font-bold text-sm text-neutral-900 dark:text-white">Mango Store Locator</h4>
               </div>
-              <button onClick={() => setShowLocatorModal(false)} className="p-1 text-neutral-400 hover:text-white">
+              <button onClick={() => setShowLocatorModal(false)} className="p-1 text-neutral-400 hover:text-white btn-press">
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -868,7 +881,7 @@ export const StoreHome: React.FC = () => {
 
               <div className="max-h-60 overflow-y-auto space-y-2.5">
                 {filteredStores.map((st, i) => (
-                  <div key={i} className="p-3 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-xs space-y-1">
+                  <div key={i} className="p-3 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-xs space-y-1 transition-transform hover:scale-[1.01]">
                     <div className="flex justify-between font-bold text-neutral-900 dark:text-white">
                       <span>{st.name}</span>
                       <span className="text-mango-600 font-mono">{st.distance}</span>
@@ -886,19 +899,19 @@ export const StoreHome: React.FC = () => {
       {/* Guided Session Booking Modal */}
       {showSessionModal && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-md flex items-center justify-center p-4 animate-fadeIn">
-          <div className="bg-white dark:bg-[#16171A] rounded-mango-lg max-w-md w-full border border-neutral-200 dark:border-neutral-800 shadow-2xl overflow-hidden p-6">
+          <div className="bg-white dark:bg-[#16171A] rounded-mango-lg max-w-md w-full border border-neutral-200 dark:border-neutral-800 shadow-2xl overflow-hidden p-6 animate-scale-up">
             <div className="flex items-center justify-between pb-3 border-b border-neutral-100 dark:border-neutral-800">
               <h4 className="font-bold text-sm text-neutral-900 dark:text-white flex items-center gap-2">
                 <Calendar className="w-4 h-4 text-emerald-600" />
                 <span>Book 1-on-1 Specialist Session</span>
               </h4>
-              <button onClick={() => { setShowSessionModal(false); setSessionBooked(false); }} className="p-1 text-neutral-400 hover:text-white">
+              <button onClick={() => { setShowSessionModal(false); setSessionBooked(false); }} className="p-1 text-neutral-400 hover:text-white btn-press">
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             {sessionBooked ? (
-              <div className="py-8 text-center space-y-3">
+              <div className="py-8 text-center space-y-3 animate-scale-up">
                 <div className="w-14 h-14 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-600 flex items-center justify-center mx-auto">
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
@@ -908,7 +921,7 @@ export const StoreHome: React.FC = () => {
                 </p>
                 <button
                   onClick={() => { setShowSessionModal(false); setSessionBooked(false); }}
-                  className="mt-4 px-6 py-2 rounded-full bg-mango-500 text-white dark:text-black font-bold text-xs"
+                  className="mt-4 px-6 py-2 rounded-full bg-mango-500 text-white font-bold text-xs btn-press"
                 >
                   Done
                 </button>
@@ -934,7 +947,7 @@ export const StoreHome: React.FC = () => {
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-3 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm mt-4"
+                  className="w-full py-3 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm mt-4 btn-press"
                 >
                   Confirm Free Booking
                 </button>

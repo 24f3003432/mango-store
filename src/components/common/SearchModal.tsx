@@ -99,12 +99,12 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-md flex items-start justify-center pt-14 sm:pt-20 px-4 animate-fadeIn">
       <div 
-        className="bg-white dark:bg-[#16171A] w-full max-w-2xl rounded-mango shadow-2xl border border-neutral-200 dark:border-neutral-800 overflow-hidden"
+        className="bg-white dark:bg-[#16171A] w-full max-w-2xl rounded-mango shadow-elevation dark:shadow-elevation-dark border border-neutral-200 dark:border-neutral-800 overflow-hidden animate-scale-up origin-top"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Search Input Bar */}
         <div className="p-4 border-b border-neutral-200 dark:border-neutral-800 flex items-center gap-3">
-          <Search className="w-5 h-5 text-mango-500 shrink-0" />
+          <Search className="w-5 h-5 text-mango-500 shrink-0 animate-pulse-subtle" />
           <input
             ref={inputRef}
             type="text"
@@ -115,7 +115,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
           />
           <button
             onClick={onClose}
-            className="p-1.5 rounded-full text-neutral-400 hover:text-neutral-700 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+            className="p-1.5 rounded-full text-neutral-400 hover:text-neutral-700 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors btn-press"
           >
             <X className="w-5 h-5" />
           </button>
@@ -123,10 +123,10 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
 
         {/* Filter Tabs when query is active */}
         {query.trim() !== '' && totalResults > 0 && (
-          <div className="flex items-center gap-2 px-4 py-2 border-b border-neutral-100 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/40 text-xs">
+          <div className="flex items-center gap-2 px-4 py-2 border-b border-neutral-100 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/40 text-xs animate-fadeIn">
             <button
               onClick={() => setActiveTab('all')}
-              className={`px-3 py-1 rounded-full font-bold transition-all ${
+              className={`px-3 py-1 rounded-full font-bold transition-all btn-press ${
                 activeTab === 'all'
                   ? 'bg-neutral-900 text-white dark:bg-white dark:text-black shadow-sm'
                   : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white'
@@ -136,7 +136,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
             </button>
             <button
               onClick={() => setActiveTab('products')}
-              className={`px-3 py-1 rounded-full font-bold transition-all ${
+              className={`px-3 py-1 rounded-full font-bold transition-all btn-press ${
                 activeTab === 'products'
                   ? 'bg-neutral-900 text-white dark:bg-white dark:text-black shadow-sm'
                   : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white'
@@ -146,7 +146,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
             </button>
             <button
               onClick={() => setActiveTab('support')}
-              className={`px-3 py-1 rounded-full font-bold transition-all ${
+              className={`px-3 py-1 rounded-full font-bold transition-all btn-press ${
                 activeTab === 'support'
                   ? 'bg-neutral-900 text-white dark:bg-white dark:text-black shadow-sm'
                   : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white'
@@ -174,15 +174,15 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
                         onClose();
                         navigate(link.route);
                       }}
-                      className="flex items-center justify-between p-3 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800/70 text-left transition-colors group"
+                      className="flex items-center justify-between p-3 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800/70 text-left transition-all btn-press group"
                     >
                       <div className="flex items-center gap-2.5">
-                        <Icon className="w-4 h-4 text-mango-500" />
-                        <span className="text-sm font-semibold text-neutral-800 dark:text-neutral-200 group-hover:text-mango-600 dark:group-hover:text-mango-400">
+                        <Icon className="w-4 h-4 text-mango-500 group-hover:scale-110 transition-transform" />
+                        <span className="text-sm font-semibold text-neutral-800 dark:text-neutral-200 group-hover:text-mango-600 dark:group-hover:text-mango-400 transition-colors">
                           {link.label}
                         </span>
                       </div>
-                      <ArrowRight className="w-3.5 h-3.5 text-neutral-400 group-hover:text-mango-500 group-hover:translate-x-0.5 transition-all" />
+                      <ArrowRight className="w-3.5 h-3.5 text-neutral-400 group-hover:text-mango-500 group-hover:translate-x-1 transition-all" />
                     </button>
                   );
                 })}
@@ -211,17 +211,17 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
                       <div
                         key={product.id}
                         onClick={() => handleSelectProduct(product)}
-                        className="flex items-center justify-between p-3 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800/70 cursor-pointer transition-colors group"
+                        className="flex items-center justify-between p-3 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800/70 cursor-pointer transition-all hover:scale-[1.01] group border border-transparent hover:border-neutral-200 dark:hover:border-neutral-700"
                       >
                         <div className="flex items-center gap-3">
                           <img
                             src={product.colors[0]?.image}
                             alt={product.name}
-                            className="w-12 h-12 rounded-lg object-contain bg-neutral-100 dark:bg-neutral-800 border border-neutral-200/50 dark:border-neutral-700/50 p-1"
+                            className="w-12 h-12 rounded-lg object-contain bg-neutral-100 dark:bg-neutral-800 border border-neutral-200/50 dark:border-neutral-700/50 p-1 group-hover:scale-105 transition-transform"
                           />
                           <div>
                             <div className="flex items-center gap-2">
-                              <h4 className="font-bold text-sm text-neutral-900 dark:text-white group-hover:text-mango-500 transition-colors">
+                              <h4 className="font-bold text-sm text-neutral-900 dark:text-white group-hover:text-mango-600 dark:group-hover:text-mango-400 transition-colors">
                                 {product.name}
                               </h4>
                               {product.badge && (
@@ -239,7 +239,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
                           <span className="font-bold text-sm text-neutral-900 dark:text-white">
                             ${product.basePrice.toLocaleString()}
                           </span>
-                          <span className="block text-[10px] text-mango-600 dark:text-mango-400 font-bold">
+                          <span className="block text-[10px] text-mango-600 dark:text-mango-400 font-bold group-hover:translate-x-1 transition-transform">
                             Configure &rarr;
                           </span>
                         </div>
@@ -262,15 +262,15 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
                       <div
                         key={article.id}
                         onClick={handleSelectArticle}
-                        className="p-3 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800/70 cursor-pointer transition-colors group flex items-start justify-between gap-3"
+                        className="p-3 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800/70 cursor-pointer transition-all hover:scale-[1.01] group flex items-start justify-between gap-3 border border-transparent hover:border-neutral-200 dark:hover:border-neutral-700"
                       >
                         <div className="flex items-start gap-3">
-                          <div className="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-950 text-blue-600 flex items-center justify-center shrink-0 mt-0.5">
+                          <div className="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-950 text-blue-600 flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-105 transition-transform">
                             <BookOpen className="w-4 h-4" />
                           </div>
                           <div>
                             <div className="flex items-center gap-2">
-                              <h4 className="font-bold text-sm text-neutral-900 dark:text-white group-hover:text-mango-500 transition-colors">
+                              <h4 className="font-bold text-sm text-neutral-900 dark:text-white group-hover:text-mango-600 dark:group-hover:text-mango-400 transition-colors">
                                 {article.title}
                               </h4>
                               <span className="text-[9px] font-semibold uppercase px-1.5 py-0.5 rounded bg-neutral-200 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-300">
